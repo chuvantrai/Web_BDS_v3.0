@@ -1,0 +1,17 @@
+<div class="topcontact shadow lienhe2" style="">
+      <b><a class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal" href="https://zalo.me/0879849888">
+          <span class="fa fa-comment-dots" aria-hidden="true"></span>
+          <span class="text" style=" font-family: unset;"> <img src="../../img/iconzalo.jpg" style="width: 28px; max-height: 26px; border-radius: 5px;">  Nút nhắn tin Zalo</span>
+        </a></b>
+    </div>
+
+<div class="topcontact shadow lienhe1" style="">
+      <b><a class="text-decoration-none" href="tel:0879849888" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <span class="fa fa-comment-dots" aria-hidden="true"></span>
+          <span class="text" style="color: #cc3300; ">Nút gọi trực tiếp:<br> <i class="bi bi-telephone-fill"></i>𝟎𝟖𝟕𝟗.𝟖𝟒𝟗.𝟖𝟖𝟖</span>
+        </a></b>
+<!--          <span class="zalo1 position-absolute top-0 start-100 translate-middle badge rounded-pill" style="color: white;">
+            Có Zalo
+  </span>-->
+    </div>
+
