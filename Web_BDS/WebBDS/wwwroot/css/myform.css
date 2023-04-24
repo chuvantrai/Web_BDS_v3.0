@@ -1,0 +1,29 @@
+﻿.note-editing-area{
+    min-height: 200px;
+}
+.input {
+    /* Used to position the input */
+    position: relative;
+    /* Center the content */
+    align-items: center;
+    display: flex;
+    /* Border */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.container__input {
+    /* Take the full size */
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    /* Make it transparent */
+    opacity: 0;
+}
+
+.container__icon {
+    margin-right: 8px;
+}
+
+

@@ -25,15 +25,10 @@ namespace WebBDS.Controllers
             if (jsonStr is null) { user = new User(); }
             else { user = JsonConvert.DeserializeObject<User>(jsonStr); ViewBag.User = user; }
 
-            using (var context = new Bds_CShapContext())
-            {
-                var t = context.Users.ToList();
-            }
-
             if (tb!=null&&tb.Equals("1")) { ViewBag.thongbao = "Đã gửi yêu cầu thành công!"; }
             List<News> listnews = _context.News.OrderByDescending(x=>x.DateUp).Skip(0).Take(3).ToList();
             ViewBag.listnews= listnews;
-
+            
             List<Product> listcanho = _context.Products.OrderByDescending(x=>x.ProductId)
                 .Where(x=>x.Category.CategoryName.Equals("Căn hộ")).Skip(0).Take(3).ToList();
             ViewBag.listcanho = listcanho;
@@ -47,7 +42,7 @@ namespace WebBDS.Controllers
                 .Where(x => x.Category.CategoryName.Equals("Biệt Thự")).Skip(0).Take(3).ToList();
             ViewBag.listbietthu = listbietthu;
             ViewBag.listregi = _context.Regionals.ToList();
-            return View("Index.cshtml");
+            return View("Index");
         }
 
         public IActionResult Privacy()

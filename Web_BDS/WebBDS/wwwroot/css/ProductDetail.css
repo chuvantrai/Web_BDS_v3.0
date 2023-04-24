@@ -1,0 +1,98 @@
+﻿.container {
+    margin-top: 100px;
+    margin-bottom: 100px
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%
+}
+
+#custCarousel .carousel-indicators {
+    position: static;
+    margin-top: 20px
+}
+
+    #custCarousel .carousel-indicators > li {
+        width: 100px
+    }
+
+    #custCarousel .carousel-indicators li img {
+        display: block;
+        opacity: 0.5
+    }
+
+    #custCarousel .carousel-indicators li.active img {
+        opacity: 1
+    }
+
+    #custCarousel .carousel-indicators li:hover img {
+        opacity: 0.75
+    }
+
+.carousel-item img {
+    width: 80%
+}
+
+.anh img {
+    height: 500px;
+    width: 100%;
+}
+
+.anh2 img {
+    height: 110px;
+}
+
+iframe {
+    width: 100%;
+    height: 450px
+}
+
+
+.chitiet2 img {
+    width: 100%;
+}
+
+.chitiet {
+    padding-right: 25px;
+}
+
+.chu1 {
+    font-size: 25px;
+}
+
+.chu3 {
+    font-size: 35px;
+}
+
+@media only screen and (max-width: 900px) { /*chỉnh cho màn dưới 900px*/
+    .anh img {
+        height: 300px;
+        width: 100%;
+    }
+
+    .anh2 img {
+        height: 50px;
+    }
+
+    .khoi3 {
+        margin-bottom: 10px;
+    }
+
+    iframe {
+        height: 200px;
+    }
+
+    h1 {
+        size: 10px;
+    }
+
+    .chu1 {
+        font-size: 20px;
+    }
+
+    .chu3 {
+        font-size: 25px;
+        font-weight: bolder;
+    }
+}

@@ -1,0 +1,28 @@
+﻿.fakeimg {
+    height: 200px;
+    background: #aaa;
+}
+
+.chitiet img {
+    max-height: 373px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.chitiet2 img {
+    width: 100%;
+}
+
+.chitiet img element.style {
+    width: 100%;
+}
+
+@media only screen and (max-width: 900px) { /*chỉnh cho màn dưới 900px*/
+    h2 {
+        font-size: 20px;
+    }
+
+    .chitiet img {
+        max-height: 200px;
+    }
+}
