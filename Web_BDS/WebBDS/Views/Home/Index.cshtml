@@ -1,301 +1,140 @@
-﻿@using WebBDS.Models
-@model List<Product>
-@{
-    ViewData["Title"] = "Home Page";
-	ViewBag.Title= "Website Bất Động Sản số 1 Nha Trang";
-	List<News> listnews = ViewBag.listnews;
-    List<Product> listcanho = ViewBag.listcanho;
-    List<Product> listdatnen = ViewBag.listdatnen;
-    List<Product> listnhapho = ViewBag.listnhapho;
-    List<Product> listbietthu = ViewBag.listbietthu;
-
-    List<Regional> listre = ViewBag.listregi;
-}
-
-	<!--tin tức nổi bật-->
-	<div class=" row news0">
-		<div class="col-12 mb-3  news1">
-			<h2>Thông Tin Bất Động Sản Nha Trang Mới Nhất</h2>
-			<p>Trước khi đầu tư hãy tìm hiểu kỹ thông tin về bất động sản Nha Trang. Dưới đây là những</p>
-			<p>thông tin bổ ích và chính thống được chúng tôi chia sẻ.</p>
-		</div>
-		<div class="col-6 mb-3 news2">
-			<div class="carousel-inner">
-				<img src="~/myfiles/@listnews[0].ImgAvar" class="d-block w-100" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-					<a href="/tintuc?id=@listnews[0].NewsId"><h5>@listnews[0].Title</h5></a>
-					<p><i class="bi bi-calendar3"></i>@listnews[0].DateUp.Day/@listnews[0].DateUp.Month/@listnews[0].DateUp.Year</p>
-				</div>
-			</div>
-
-		</div>
-		<div class="col-6 mb-3 news3">
-			@for (var i = 1; i < 3; i++)
-		   {
-			<div class="card mb-3" style="max-width: 680px;">
-				<div class="row no-gutters">
-					<div class="card-body col-md-4">
-						<img src="~/myfiles/@listnews[i].ImgAvar" alt="...">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<a href="/tintuc?id=@listnews[i].NewsId"><h5 class="card-title">@listnews[i].Title</h5></a>
-							<p class="card-text"><i class="bi bi-calendar3"></i><small class="text-muted">@listnews[i].DateUp.Day/@listnews[i].DateUp.Month/@listnews[i].DateUp.Year</small></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		   }
-		</div>
-		<div class="col-12 mb-3" style="text-align: center;"><a href="/tintuc" >Tất cả</a></div>
-	</div>
-
-@*	thông tin căn hộ*@
-<section class="pt-3 section1">
+﻿<link rel="stylesheet" href="css/Home_Index.css">
+<!-- Trending Area Start -->
+    <div class="trending-area fix">
         <div class="container">
-            <div class="row">
-                <div class="col-6 thanhkv alert-primary th1">
-                    <h3 class="mb-3">Căn hộ </h3> 
+            <div class="trending-main">
+                <!-- Trending Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="trending-tittle">
+                            <div class="title-news-home">
+                                <h5>Thông Tin Bất Động Sản Nha Trang Mới Nhất</h5>
+                            </div>
+                            <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                            <div class="trending-animated">
+                                <ul id="js-news" class="js-hidden" >
+                                    <li class="news-item" style="font-size: 10px !important;">Trước khi đầu tư hãy tìm hiểu kỹ thông tin về bất động sản Nha Trang.</li>
+                                    <li class="news-item" style="font-size: 10px !important;">Dưới đây là những thông tin bổ ích và chính thống được chúng tôi chia sẻ.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 text-right thanhkv th2 alert-primary">
-                    <a href="/batdongsan?category=1">(tất cả)</a>     
-                </div>
-                <div class="col-12">
-                    <div id="carouselExampleIndicators12" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="row">
-                            @foreach (Product p in listcanho)
-                           {
-                               
-                                <div class="col-md-4 mb-3" >
-                                  <a href="/batdongsan/Chitiet?id=@p.ProductId" class="card-link list-group-item-action">
-                                      <div class="card ">
-                                          <img class="img-fluid" alt="100%x280" src="~/myfiles/@p.ImgAvar">
-                                          <div class="card-body">
-                                              @for (var i = 0; i < 5; i++)
-                                             {
-                                                  <i class="bi bi-star-fill" style="color: #feba45"></i>
-                                             }
-                                                @foreach (Regional r in listre)
-                                                {
-                                                    if (p.RegionalId == r.RegionalId)
-                                                    {
-                                                        <span style="color: #aaa;float: right;"><i class="bi bi-geo-alt-fill"></i> @r.RegionalName </span>
-                                                    }
-                                                }
-                                              <h4 class="card-title" ><div style="height: 90px;overflow:hidden;">
-                                                  #@p.ProductId.@p.ProductName</div></h4>
-                                                  <p class="card-text">Giá: <samp style="color: red;">@p.LetterPrice </samp>  <i class="bi bi-cash-coin" style="color: #49be25"></i></p>
-                                             
-                                         </div>
-                                      </div>
-                                  </a>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Trending Top -->
+                        <div class="trending-top mb-30">
+                            <div class="trend-top-img">
+                                <img src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" alt="">
+                                <div class="trend-top-cap">
+                                    <span style="background-color: #CCE5FF">Xem</span>
+                                    <div style="display: flex">
+                                        <h2 class="title-news-item-home"><a>KDI Holdings ra mắt dự án nghỉ dưỡng 13.000 tỷ tại Nha Trang KDI Holdings ra mắt dự án nghỉ dưỡng 13.000 tỷ tại Nha Trang </a></h2>
+                                        <p class="title-news-item-home title-news-item-home-2 "><i class="bi bi-calendar-minus"></i>10/05/2023</p>
+                                    </div>
                                 </div>
-                               
-                           }
-                           </div> 
+                            </div>
+                        </div>
+                        <!-- Trending Bottom -->
+                        <div class="trending-bottom">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                <div class="single-bottom mb-35">
+                                    <div class="trend-bottom-img mb-30">
+                                        <div class="trand-right-single d-flex">
+                                            <div class="trand-right-img">
+                                                <img src="assets/img/trending/right1.jpg" alt="">
+                                            </div>
+                                            <div class="trand-right-cap">
+                                                <span class="color1">Concert</span>
+                                                <h4>
+                                                    <a href="details.html">Welcome To The Best Model Winner Contest</a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="trend-bottom-cap">
+                                        <span class="color1">Lifestyple</span>
+                                        <h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="single-bottom mb-35">
+                                        <div class="trend-bottom-img mb-30">
+                                            <img src="assets/img/trending/trending_bottom2.jpg" alt="">
+                                        </div>
+                                        <div class="trend-bottom-cap">
+                                            <span class="color2">Sports</span>
+                                            <h4><h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="single-bottom mb-35">
+                                        <div class="trend-bottom-img mb-30">
+                                            <img src="assets/img/trending/trending_bottom3.jpg" alt="">
+                                        </div>
+                                        <div class="trend-bottom-cap">
+                                            <span class="color3">Travels</span>
+                                            <h4><a href="details.html"> Welcome To The Best Model Winner Contest</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Riht content -->
+                    <div class="col-lg-4">
+                        <div class="trand-right-single d-flex">
+                            <div class="trand-right-img">
+                                <img src="assets/img/trending/right1.jpg" alt="">
+                            </div>
+                            <div class="trand-right-cap">
+                                <span class="color1">Concert</span>
+                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                            </div>
+                        </div>
+                        <div class="trand-right-single d-flex">
+                            <div class="trand-right-img">
+                                <img src="assets/img/trending/right2.jpg" alt="">
+                            </div>
+                            <div class="trand-right-cap">
+                                <span class="color3">sea beach</span>
+                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                            </div>
+                        </div>
+                        <div class="trand-right-single d-flex">
+                            <div class="trand-right-img">
+                                <img src="assets/img/trending/right3.jpg" alt="">
+                            </div>
+                            <div class="trand-right-cap">
+                                <span class="color2">Bike Show</span>
+                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                            </div>
+                        </div> 
+                        <div class="trand-right-single d-flex">
+                            <div class="trand-right-img">
+                                <img src="assets/img/trending/right4.jpg" alt="">
+                            </div>
+                            <div class="trand-right-cap">
+                                <span class="color4">See beach</span>
+                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
+                            </div>
+                        </div>
+                        <div class="trand-right-single d-flex">
+                            <div class="trand-right-img">
+                                <img src="assets/img/trending/right5.jpg" alt="">
+                            </div>
+                            <div class="trand-right-cap">
+                                <span class="color1">Skeping</span>
+                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </section>
-
-@*	thông tin đất nền*@
-<section class="pt-3 section1">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 thanhkv alert-primary th1">
-                    <h3 class="mb-3">Đất nền</h3> 
-                </div>
-                <div class="col-6 text-right thanhkv th2 alert-primary">
-                    <a href="/batdongsan?category=2">(tất cả)</a>
-                       
-                </div>
-                <div class="col-12">
-                    <div id="carouselExampleIndicators12" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="row">
-                            @foreach (Product p in listdatnen)
-                           {
-                               
-                                <div class="col-md-4 mb-3" >
-                                  <a href="/batdongsan/Chitiet?id=@p.ProductId" class="card-link list-group-item-action">
-                                      <div class="card ">
-                                          <img class="img-fluid" alt="100%x280" src="~/myfiles/@p.ImgAvar">
-                                          <div class="card-body">
-                                              @for (var i = 0; i < 5; i++)
-                                             {
-                                                  <i class="bi bi-star-fill" style="color: #feba45"></i>
-                                             }
-                                                @foreach (Regional r in listre)
-                                                {
-                                                    if (p.RegionalId == r.RegionalId)
-                                                    {
-                                                        <span style="color: #aaa;float: right;"><i class="bi bi-geo-alt-fill"></i> @r.RegionalName </span>
-                                                    }
-                                                }
-                                              <h4 class="card-title" ><div style="height: 90px;overflow:hidden;">
-                                                  #@p.ProductId.@p.ProductName</div></h4>
-                                                  <p class="card-text">Giá: <samp style="color: red;">@p.LetterPrice </samp>  <i class="bi bi-cash-coin" style="color: #49be25"></i></p>
-                                             
-                                         </div>
-                                      </div>
-                                  </a>
-                                </div>
-                               
-                           }
-                           </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-@*	thông tin nhà phố*@
-<section class="pt-3 section1">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 thanhkv alert-primary th1">
-                    <h3 class="mb-3">Nhà phố </h3> 
-                </div>
-                <div class="col-6 text-right thanhkv th2 alert-primary">
-                    <a href="/batdongsan?category=3">(tất cả)</a>
-                   
-                </div>
-                <div class="col-12">
-                    <div id="carouselExampleIndicators12" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="row">
-                            @foreach (Product p in listnhapho)
-                           {
-                               
-                                <div class="col-md-4 mb-3" >
-                                  <a href="/batdongsan/Chitiet?id=@p.ProductId" class="card-link list-group-item-action">
-                                      <div class="card ">
-                                          <img class="img-fluid" alt="100%x280" src="~/myfiles/@p.ImgAvar">
-                                          <div class="card-body">
-                                              @for (var i = 0; i < 5; i++)
-                                             {
-                                                  <i class="bi bi-star-fill" style="color: #feba45"></i>
-                                             }
-                                                @foreach (Regional r in listre)
-                                                {
-                                                    if (p.RegionalId == r.RegionalId)
-                                                    {
-                                                        <span style="color: #aaa;float: right;"><i class="bi bi-geo-alt-fill"></i> @r.RegionalName </span>
-                                                    }
-                                                }
-                                              <h4 class="card-title" ><div style="height: 90px;overflow:hidden;">
-                                                  #@p.ProductId.@p.ProductName</div></h4>
-                                                  <p class="card-text">Giá: <samp style="color: red;">@p.LetterPrice </samp>  <i class="bi bi-cash-coin" style="color: #49be25"></i></p>
-                                             
-                                         </div>
-                                      </div>
-                                  </a>
-                                </div>
-                               
-                           }
-                           </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-@*	thông tin Biệt thự*@
-<section class="pt-3 section1">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 thanhkv alert-primary th1">
-                    <h3 class="mb-3">Biệt thự </h3> 
-                </div>
-                <div class="col-6 text-right thanhkv th2 alert-primary">
-                    <a href="/batdongsan?category=4">(tất cả)</a>
-                        
-                </div>
-                <div class="col-12">
-                    <div id="carouselExampleIndicators12" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="row">
-                            @foreach (Product p in listbietthu)
-                           {
-                               
-                                <div class="col-md-4 mb-3" >
-                                  <a href="/batdongsan/Chitiet?id=@p.ProductId" class="card-link list-group-item-action">
-                                      <div class="card ">
-                                          <img class="img-fluid" alt="100%x280" src="~/myfiles/@p.ImgAvar">
-                                          <div class="card-body">
-                                              @for (var i = 0; i < 5; i++)
-                                             {
-                                                  <i class="bi bi-star-fill" style="color: #feba45"></i>
-                                             }
-                                                @foreach (Regional r in listre)
-                                                {
-                                                    if (p.RegionalId == r.RegionalId)
-                                                    {
-                                                        <span style="color: #aaa;float: right;"><i class="bi bi-geo-alt-fill"></i> @r.RegionalName </span>
-                                                    }
-                                                }
-                                              <h4 class="card-title" ><div style="height: 90px;overflow:hidden;">
-                                                  #@p.ProductId.@p.ProductName</div></h4>
-                                                  <p class="card-text">Giá: <samp style="color: red;">@p.LetterPrice </samp>  <i class="bi bi-cash-coin" style="color: #49be25"></i></p>
-                                             
-                                         </div>
-                                      </div>
-                                  </a>
-                                </div>
-                               
-                           }
-                           </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-
-
-@if(ViewBag.thongbao!=null){
-
-    @*thông báo*@
-        <div class="container thongbao" id="thongbao1" >
-			<div class="row" style="display: block">
-				<div class="col">
-				</div>
-				<div class="col-8">
-					<div class="alert alert-info alert-dismissible fade show" id='tempAlert' role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<strong> <i class="bi bi-check-circle-fill"></i> </strong> @ViewBag.thongbao
-					</div>
-				</div>
-				<div class="col">
-				</div>
-			</div>
-		</div>
-
-<style>
-.thongbao{
-        text-decoration: none;
-        position: fixed;
-        top:24px;
-        left: 100px;
-        color: #fe9d15;
-        transition: all ease 0.4s;
-        border-radius: 40px;
-        z-index: 999;
-        margin-left: 150px
-}
-</style>
-<script>
-setTimeout(function () {
-    document.getElementById('thongbao1').classList.add("hide");
-    document.getElementById('thongbao1').style.display = 'none';
-}, 4000);
-</script>
-}
+        </div>
+    </div>
+    <!-- Trending Area End -->

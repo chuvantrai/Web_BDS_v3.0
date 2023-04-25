@@ -15,3 +15,11 @@
   </span>-->
     </div>
 
+
+
+_______setting_________
+Git
+.net6
+Microsoft Visual C+ + Redistributable
+.NET Core runtime
+
