@@ -1,0 +1,9 @@
+.logo-text img{
+    height: 3.7rem;
+}
+.color-price{
+    color: #2eff72 !important;
+}
+@media (max-width: 767px) {
+    
+}

@@ -7,11 +7,29 @@
     color: #072442;
     color: #1C2331;
     color: #161C27;
-
+    /*aspect-ratio: 1.33;*/
 }
 
 strong {
     background: #0a2b1d !important;
+}
+.weekly-caption{
+    background: #00000073 !important;
+}
+.weekly-caption h4{
+    color: antiquewhite;   
+}
+.weekly-img img{
+    aspect-ratio: 1.33;
+}
+.price-item1{
+    margin-left: auto;
+}
+.title-pro-home{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 @media (max-width: 767px) {
@@ -34,5 +52,26 @@ strong {
     .title-news-item-home-2{
         height: 2.1rem;
         padding-top: 0.75rem;   
+    }
+    .trand-right-img{
+        width: 40% !important;
+        min-width: 40% !important;
+    }
+    .trand-right-img img{
+        width: 100%;
+        height: 90%;
+    }
+    .trand-right-cap a{
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    .date-news-item2{
+        padding: 0px 0.8rem;
+        margin-left: auto;
+    }
+    .footer-border{
+        padding: 0px;
     }
 }

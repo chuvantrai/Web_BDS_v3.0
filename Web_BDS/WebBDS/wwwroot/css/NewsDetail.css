@@ -1,0 +1,8 @@
+@media (max-width: 767px) {
+    section{
+        padding-top: 20px !important;
+    }
+    .content-news article{
+        max-width: 100% !important;
+    }
+}

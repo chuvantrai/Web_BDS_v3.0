@@ -58,9 +58,7 @@ C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\staticwebassets\msbui
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\staticwebassets.pack.json
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\staticwebassets.build.json
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\staticwebassets.development.json
-C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\scopedcss\bundle\WebBDS.styles.css
-C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\scopedcss\projectbundle\WebBDS.bundle.scp.css
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\WebBDS.csproj.CopyComplete
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\WebBDS.dll
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\refint\WebBDS.dll
