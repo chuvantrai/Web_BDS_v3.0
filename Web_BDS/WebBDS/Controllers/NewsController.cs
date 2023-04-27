@@ -14,4 +14,9 @@ public class NewsController : Controller
     {
         return View("/Views/Public/NewsDetail.cshtml");
     }
+    [HttpGet]
+    public IActionResult NewsList()
+    {
+        return View("/Views/Public/NewsList.cshtml");
+    }
 }
