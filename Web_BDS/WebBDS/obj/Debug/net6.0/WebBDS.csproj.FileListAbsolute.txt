@@ -65,3 +65,4 @@ C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\refint\WebBDS.dll
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\WebBDS.pdb
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\WebBDS.genruntimeconfig.cache
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\ref\WebBDS.dll
+C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

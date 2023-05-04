@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IExtensionFile, ExtensionFile>();
 builder.Services.AddSingleton<Bds_CShapContext>();
+// builder.Services.AddSingleton<IJwtTokenHandler, JwtTokenHandler>();
 
 var app = builder.Build();
 

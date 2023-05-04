@@ -1,17 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebBDS.Extensions;
+using WebBDS.Models;
 
 namespace WebBDS.Controllers;
 
-public class NewsController : Controller
+public class NewsController : AbstractController
 {
-    // GET
-    //  public IActionResult Index()
+    // private readonly Bds_CShapContext _bdsCShapContext;
+    // public NewsController(IJwtTokenHandler jwtTokenHandler,Bds_CShapContext bdsCShapContext) : base(jwtTokenHandler)
     // {
-    //     return View("/Views/Public/NewsDetail.cshtml");
+    //     _bdsCShapContext = bdsCShapContext;
     // }
+
     [HttpGet]
     public IActionResult NewsDetail()
     {
+        // if (!CheckRoleUser( new []{"Admin"} ,false))
+        // {
+        //     return View("Error");
+        // }
         return View("/Views/Public/NewsDetail.cshtml");
     }
     [HttpGet]

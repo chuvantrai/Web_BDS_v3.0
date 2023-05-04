@@ -74,4 +74,10 @@ strong {
     .footer-border{
         padding: 0px;
     }
+    #news-1 .trend-top-cap{
+        width: 100%;
+    }
+    #news-1 h2{
+        width: 70%;
+    }
 }
