@@ -4,16 +4,16 @@
 loadDataHome();
 function loadDataHome(){
     $.ajax({
-        url: 'https://localhost:2001/Home/HomeData',
+        url: '/Home/HomeData',
         method: 'GET',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(response) {
-            loadTop3News(response.Top3News);
-            loadProduct(response.Top3DatNen,'#DatNen');
-            loadProduct(response.Top3CanHo,'#CanHo');
-            loadProduct(response.Top3NhaPho,'#NhaPho');
-            loadProduct(response.Top3BietThu,'#BietThu');
+            loadTop3News(response.top3News);
+            loadProduct(response.top3DatNen,'#DatNen');
+            loadProduct(response.top3CanHo,'#CanHo');
+            loadProduct(response.top3NhaPho,'#NhaPho');
+            loadProduct(response.top3BietThu,'#BietThu');
         },
         error: function(xhr, status, error) {
             console.log(222,error,xhr, status);
@@ -22,14 +22,14 @@ function loadDataHome(){
 }
 
 function loadTop3News(listNews){
-    var news1 = `<img src="/myfiles/`+listNews[0].ImgAvar+`" alt="">
+    var news1 = `<img src="/myfiles/`+listNews[0].imgAvar+`" alt="">
             <div class="trend-top-cap">
                 <span style="background-color: #CCE5FF">Xem</span>
                 <div style="display: flex">
                     <h2 class="title-news-item-home">
-                        <a>`+listNews[0].Title+`</a>
+                        <a>`+listNews[0].title+`</a>
                     </h2>
-                    <p class="title-news-item-home title-news-item-home-2 "><i class="bi bi-calendar-minus"></i>`+FormatDate(listNews[0].DateUp)+`</p>
+                    <p class="title-news-item-home title-news-item-home-2 "><i class="bi bi-calendar-minus"></i>`+FormatDate(listNews[0].dateUp)+`</p>
                 </div>
             </div>`;
     var news2 ="";
@@ -37,15 +37,15 @@ function loadTop3News(listNews){
         if (index!==0){
             news2+=`<div class="trand-right-single d-flex">
                         <div class="trand-right-img">
-                            <img src="myfiles/`+item.ImgAvar+`" alt="">
+                            <img src="myfiles/`+item.imgAvar+`" alt="">
                         </div>
                         <div class="trand-right-cap">
                             <div style="display: flex">
                                 <span class="color3">#Hastag</span>
-                                <p class="title-news-item-home-2 date-news-item2"><i class="bi bi-calendar-minus"></i>`+FormatDate(item.DateUp)+`</p>
+                                <p class="title-news-item-home-2 date-news-item2"><i class="bi bi-calendar-minus"></i>`+FormatDate(item.dateUp)+`</p>
                             </div>
                             <h4>
-                                <a href="`+item.NewsId+`">`+item.Title+`</a>
+                                <a href="`+item.newsId+`">`+item.title+`</a>
                             </h4>
                         </div>
                     </div>`;
@@ -60,15 +60,15 @@ function loadProduct(listProducts,id){
     listProducts.forEach(function(item, index) {
             product+=`<div class="weekly-single active">
                             <div class="weekly-img">
-                                <img src="/myfiles/`+item.ImgAvar+`" alt="">
+                                <img src="/myfiles/`+item.imgAvar+`" alt="">
                             </div>
                             <div class="weekly-caption">
                                 <div style="display: flex">
                                     <span class="color1">Strike</span>
-                                    <p class="price-item1 color-price">`+item.LetterPrice+` VND</p>
+                                    <p class="price-item1 color-price">`+item.letterPrice+` VND</p>
                                 </div>
                                 <h4>
-                                    <a href="`+item.ProductId+`" class="title-pro-home">`+item.ProductName+`</a>
+                                    <a href="`+item.productId+`" class="title-pro-home">`+item.productName+`</a>
                                 </h4>
                             </div>
                         </div>`;
