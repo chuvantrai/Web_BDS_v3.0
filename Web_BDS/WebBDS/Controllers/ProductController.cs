@@ -55,6 +55,85 @@ public class ProductController : Controller
 
         return Json("NullData");
     }
+    
+    [HttpGet]
+    public async Task<ActionResult> ProductListData2(int pageIndex, string? keySearch, 
+        CategoryProduct? categoryProduct, List<int>? listRegional,
+        SortProducts? sort)
+    {
+        var pageSize = 3;
+        var productListResponse = new ProductListResponse();
+        if (pageIndex == 0) pageIndex = 1;
+        Expression<Func<Product, bool>> whereExpression = x => true;
+        Expression<Func<Product, string?>> sortExpression = x => null;
+        Expression<Func<Product, bool>> exprCategory = x => false;
+        Expression<Func<Product, bool>> exprRegional = x => false;
+        Expression<Func<Product, bool>> exprSearch = x => false;
+
+        if (categoryProduct is not null)
+        {
+            exprCategory = exprCategory.Or(x => x.CategoryId == (int)categoryProduct);
+            whereExpression = whereExpression.And(exprCategory);
+        }
+
+        if (listRegional is not null)
+        {
+            foreach (var regional in listRegional)
+            {
+                exprRegional = exprRegional.Or(x => x.RegionalId == regional);
+                whereExpression = whereExpression.And(exprRegional);
+            }
+        }
+
+        if (!string.IsNullOrEmpty(keySearch))
+        {
+            exprSearch = exprSearch.Or(x => x.ProductName.Contains(keySearch) || keySearch.Contains(x.ProductName));
+            whereExpression = whereExpression.And(exprSearch);
+        }
+
+        var bySort = "";
+
+        switch (sort)
+        {
+            case SortProducts.Latest:
+                bySort = "-DateUp";
+                break;
+            case SortProducts.Oldest:
+                bySort = "DateUp";
+                break;
+            case SortProducts.HighPrice:
+                bySort = "-AreaM2";
+                break;
+            case SortProducts.LowPrice:
+                bySort = "AreaM2";
+                break;
+            case SortProducts.LargeArea:
+                bySort = "-NoPrice";
+                break;
+            case SortProducts.SmallArea:
+                bySort = "NoPrice";
+                break;
+            case SortProducts.LargeWidth:
+                bySort = "-HorizontalM";
+                break;
+            case SortProducts.SmallWidth:
+                bySort = "HorizontalM";
+                break;
+        }
+
+        var totalP = await _context.Products
+            .Where(whereExpression)
+            .CountAsync();
+        
+        productListResponse.TotalPage = totalP / pageSize + (totalP % pageSize > 0 ? 1 : 0);
+
+        productListResponse.ProductsList = await _context.Products
+            .Where(whereExpression)
+            .SortBy(bySort)
+            .Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToListAsync();
+
+        return Json(productListResponse);
+    }
 
     [HttpGet]
     public async Task<ActionResult> ProductListData(int pageIndex, string? keySearch, 
@@ -94,7 +173,7 @@ public class ProductController : Controller
         var listSort = new String[]{};
         if (sortWidth is not null)
         {
-            listSort = listSort.AddToLastArrayStrings(sortWidth == SortProducts.Oldest ? "DateUp" : "-" + "DateUp");
+            listSort = listSort.AddToLastArrayStrings(sortWidth == SortProducts.Oldest ? "HorizontalM" : "-" + "HorizontalM");
         }
         if (sortArea is not null)
         {

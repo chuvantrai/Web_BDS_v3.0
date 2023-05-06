@@ -34,4 +34,12 @@
     .border-title-head{
         height: 2.7rem;
     }
+    .border-checkbox{
+        align-items: center;
+        height: 2rem;
+        padding-right: 0.5rem;
+    }
+    .border-checkbox .text-checkbox{
+        max-width: 90%;
+    }
 }
