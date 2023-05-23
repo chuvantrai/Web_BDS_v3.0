@@ -1,0 +1,10 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebBDS.RequestModels;
+
+public class CreateNewsRequest
+{
+    public string Title { get; set; } = null!;
+    public string Content { get; set; } = null!;
+    public IFormFile? ImgAvar { get; set; }
+}

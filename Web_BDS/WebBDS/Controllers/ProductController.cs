@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using WebBDS.Commons;
 using WebBDS.Extensions;
 using WebBDS.Models;
+using WebBDS.RequestModels;
 using WebBDS.ResponseModels;
 
 namespace WebBDS.Controllers;
@@ -11,10 +12,12 @@ namespace WebBDS.Controllers;
 public class ProductController : Controller
 {
     private readonly Bds_CShapContext _context;
+    private readonly ExtensionFile _extensionFile;
 
-    public ProductController(Bds_CShapContext context)
+    public ProductController(Bds_CShapContext context, ExtensionFile extensionFile)
     {
         _context = context;
+        _extensionFile = extensionFile;
     }
 
     [HttpGet]
@@ -198,5 +201,35 @@ public class ProductController : Controller
             .Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToListAsync();
 
         return Json(productListResponse);
+    }
+    
+    [HttpPost]
+    public async Task<ActionResult> CreateProduct([FromQuery] CreateProductRequest createProductRequest)
+    {
+        var product = new Product()
+        {
+            ProductName = createProductRequest.ProductName,
+            Description = createProductRequest.Description,
+            CategoryId = createProductRequest.CategoryId,
+            RegionalId = createProductRequest.RegionalId,
+            LetterPrice = createProductRequest.LetterPrice,
+            NoPrice = createProductRequest.NoPrice,
+            DateUp = DateTime.Now,
+            LinkGgmap = createProductRequest.LinkGgmap,
+            AreaM2 = createProductRequest.AreaM2,
+            HorizontalM = createProductRequest.HorizontalM,
+            Status = createProductRequest.Status
+        };
+        if (createProductRequest.ImgAvar is not null)
+        {
+            product.ImgAvar = await _extensionFile.CreateImage(createProductRequest.ImgAvar);
+        }
+        else
+        {
+            return BadRequest("quá trình up ảnh lỗi!");
+        }
+        await _context.Products.AddAsync(product);
+        await _context.SaveChangesAsync();
+        return Ok(product);
     }
 }

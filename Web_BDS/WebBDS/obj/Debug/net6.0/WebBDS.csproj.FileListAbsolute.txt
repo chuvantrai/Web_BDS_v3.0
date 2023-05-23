@@ -89,3 +89,8 @@ C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\runtimes\linux\native
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
 C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\_MyProject\Web_BDS_v3.0\Web_BDS\WebBDS\obj\Debug\net6.0\WebBDS.MvcApplicationPartsAssemblyInfo.cs
