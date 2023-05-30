@@ -1,14 +1,17 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using WebBDS.Commons;
 using WebBDS.Extensions;
 using WebBDS.Models;
 using WebBDS.RequestModels;
 using WebBDS.ResponseModels;
+using WebBDS.FilterPermissions;
 
 namespace WebBDS.Controllers;
-
+[ApiController]
+[Route("[controller]/[action]")]
 public class ProductController : Controller
 {
     private readonly Bds_CShapContext _context;
@@ -19,7 +22,7 @@ public class ProductController : Controller
         _context = context;
         _extensionFile = extensionFile;
     }
-
+    
     [HttpGet]
     public ActionResult ProductDetail(int? id)
     {
@@ -40,6 +43,7 @@ public class ProductController : Controller
     }
 
     [HttpGet]
+    [FilterPermission(Action = ActionFilterEnum.ProductDetailData,UserRole = new []{UserRoleEnum.Admin,UserRoleEnum.Customer})]
     public async Task<ActionResult> ProductDetailData(int? id)
     {
         if (id is not null)
@@ -230,6 +234,74 @@ public class ProductController : Controller
         }
         await _context.Products.AddAsync(product);
         await _context.SaveChangesAsync();
+        var productResult = JsonConvert.SerializeObject(product);
+
+        if (createProductRequest.ListImgOther is not null)
+        {
+            try
+            {
+                foreach (var imgFile in createProductRequest.ListImgOther)
+                {
+                    await _context.ImageProducts.AddAsync(new ImageProduct()
+                    {
+                        ProductId = product.ProductId,
+                        ImgName = await _extensionFile.CreateImage(imgFile)
+                    });
+                }
+            }
+            catch 
+            {
+                return BadRequest("quá trình up ảnh lỗi!");
+            }
+        }
+        await _context.SaveChangesAsync();
+        return Ok(productResult);
+    }
+
+    [HttpPut]
+    public async Task<ActionResult> UpdateProduct([FromQuery] UpdateProductRequest updateProductRequest)
+    {
+        var product = await _context.Products.FirstOrDefaultAsync(x=>x.ProductId==updateProductRequest.ProductId);
+        if (product is null)
+        {
+            return BadRequest("không tìm thấy product cần update"); 
+        }
+        product.ProductId = updateProductRequest.ProductId;
+        product.ProductName = updateProductRequest.ProductName;
+        product.Description = updateProductRequest.Description;
+        product.CategoryId = updateProductRequest.CategoryId;
+        product.RegionalId = updateProductRequest.RegionalId;
+        product.LetterPrice = updateProductRequest.LetterPrice;
+        product.NoPrice = updateProductRequest.NoPrice;
+        product.LinkGgmap = updateProductRequest.LinkGgmap;
+        product.AreaM2 = updateProductRequest.AreaM2;
+        product.HorizontalM = updateProductRequest.HorizontalM;
+        product.Status = updateProductRequest.Status;
+        if (updateProductRequest.ImgAvar is not null)
+        {
+            product.ImgAvar = await _extensionFile.CreateImage(updateProductRequest.ImgAvar);
+        }
+        else
+        {
+            return BadRequest("quá trình up ảnh lỗi!");
+        }
+        await _context.SaveChangesAsync();
         return Ok(product);
+    }
+    [HttpDelete]
+    public async Task<ActionResult> DeleteProduct(int productId)
+    {
+        var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == productId);
+
+        if (product is null)
+        {
+            return BadRequest("không tìm thấy product cần delete"); 
+        }
+        else
+        {
+            _context.Products.Remove(product);
+        }
+        await _context.SaveChangesAsync();
+        return Ok();
     }
 }

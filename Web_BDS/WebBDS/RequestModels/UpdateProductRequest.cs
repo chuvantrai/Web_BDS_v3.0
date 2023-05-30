@@ -1,7 +1,8 @@
 ﻿namespace WebBDS.RequestModels;
 
-public class CreateProductRequest
+public class UpdateProductRequest
 {
+    public int ProductId { get; set; }
     public string ProductName { get; set; } = null!;
     public string Description { get; set; } = null!;
     public int CategoryId { get; set; }
@@ -13,5 +14,4 @@ public class CreateProductRequest
     public double? HorizontalM { get; set; }
     public bool Status { get; set; }
     public IFormFile? ImgAvar { get; set; }
-    public List<IFormFile>? ListImgOther { get; set; }
 }
