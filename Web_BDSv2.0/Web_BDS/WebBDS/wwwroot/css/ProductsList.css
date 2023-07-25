@@ -1,0 +1,45 @@
+.input-search{
+    margin-top: 1rem;
+}
+.input-search button{
+    border-radius: 0px 6px 6px 0px;
+    border-color: #49505717;
+}
+.btn-modal{
+    border-radius: 8px;
+    border-color: #999999a8;
+}
+@media (max-width: 767px) {
+    .filter-border{
+        display: grid;
+        align-items: center;
+        width: 25%;
+        margin-right: auto;
+        justify-content: center;
+    }
+    .filter-border button{
+        border-color: #49505717;
+        color: #506172;
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 8px;
+    }
+    .search-border{
+        width: 70%;
+        padding-right: 1rem;
+    }
+    .border-fil{
+        height: 5.7rem;
+    }
+    .border-title-head{
+        height: 2.7rem;
+    }
+    .border-checkbox{
+        align-items: center;
+        height: 2rem;
+        padding-right: 0.5rem;
+    }
+    .border-checkbox .text-checkbox{
+        max-width: 90%;
+    }
+}

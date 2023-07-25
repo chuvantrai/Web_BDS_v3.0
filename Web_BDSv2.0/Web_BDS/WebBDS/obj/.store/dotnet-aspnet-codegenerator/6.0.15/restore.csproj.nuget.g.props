@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">C:\_MyProject\Web_BDS_v3.0\Web_BDSv2.0\Web_BDS\WebBDS\obj\.store\.stage\zj1egrjd.azm</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\_MyProject\Web_BDS_v3.0\Web_BDSv2.0\Web_BDS\WebBDS\obj\.store\.stage\zj1egrjd.azm</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">DotnetToolReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.5.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\_MyProject\Web_BDS_v3.0\Web_BDSv2.0\Web_BDS\WebBDS\obj\.store\.stage\zj1egrjd.azm\" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Pkgdotnet-aspnet-codegenerator Condition=" '$(Pkgdotnet-aspnet-codegenerator)' == '' ">C:\_MyProject\Web_BDS_v3.0\Web_BDSv2.0\Web_BDS\WebBDS\obj\.store\.stage\zj1egrjd.azm\dotnet-aspnet-codegenerator\6.0.15</Pkgdotnet-aspnet-codegenerator>
+  </PropertyGroup>
+</Project>

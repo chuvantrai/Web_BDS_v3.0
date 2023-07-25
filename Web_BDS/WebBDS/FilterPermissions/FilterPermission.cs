@@ -14,13 +14,6 @@ namespace WebBDS.FilterPermissions;
 
 public class FilterPermission : ActionFilterAttribute
 {
-    // private readonly IJwtTokenHandler _jwtTokenHandler;
-    //
-    // public FilterPermission(IJwtTokenHandler jwtTokenHandler)
-    // {
-    //     _jwtTokenHandler = jwtTokenHandler;
-    // }
-
     public UserRoleEnum[]? UserRole { get; set; }
     public ActionFilterEnum Action { get; set; }
 
@@ -29,16 +22,18 @@ public class FilterPermission : ActionFilterAttribute
         StringValues values;
         var checkAction = false;
         
+        //test
         var newToken = WriteToken("john_doe", "123@gmail.com", "admin", "12345");
         actionContext.HttpContext.Request.Headers["ACCESS_TOKEN"] = newToken;
+        //test
+        
         // USER_DATA
         // ACCESS_TOKEN
         if (actionContext.HttpContext.Request.Headers.TryGetValue("ACCESS_TOKEN", out values))
         {
             var headerValue = values.FirstOrDefault();
             if (!String.IsNullOrEmpty(headerValue))
-            {
-                
+            { 
                 var userToken = ReadToken(headerValue);
                 if (UserRole is null)
                 {
@@ -76,8 +71,8 @@ public class FilterPermission : ActionFilterAttribute
 
     public override void OnResultExecuting(ResultExecutingContext context)
     {
-        var newToken = WriteToken("john_doe", "123@gmail.com", "admin", "12345");
-        context.HttpContext.Request.Headers["Authorization"] = newToken;
+        // var newToken = WriteToken("john_doe", "123@gmail.com", "admin", "12345");
+        // context.HttpContext.Request.Headers["Authorization"] = newToken;
         
         // var t = context.HttpContext.Response.Headers.Add("test", _value);
         //

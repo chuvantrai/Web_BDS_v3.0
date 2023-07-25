@@ -22,6 +22,10 @@ public class NewsController : Controller
         _extensionFile = extensionFile;
     }
 
+    /// <summary>
+    /// Controller View
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public ActionResult NewsDetail(int? id)
     {
@@ -40,7 +44,11 @@ public class NewsController : Controller
     {
         return View("/Views/Public/NewsList.cshtml");
     }
-
+    
+    /// <summary>
+    /// API
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public async Task<ActionResult> NewsDetailData(int? id)
     {

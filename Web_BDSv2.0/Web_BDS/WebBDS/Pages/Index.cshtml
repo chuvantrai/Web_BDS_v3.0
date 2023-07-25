@@ -1,0 +1,242 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+<link rel="stylesheet" href="css/Home_Index.css">
+@* <script src="/js/HomeView.js"></script> *@
+<!-- Căn hộ -->
+<div class="trending-area fix">
+    <div class="container">
+        <div class="trending-main">
+            <!-- Trending Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="trending-tittle">
+                        <div class="title-news-home">
+                            <h5>Thông Tin Bất Động Sản Nha Trang Mới Nhất</h5>
+                        </div>
+                        <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                        <div class="trending-animated">
+                            <ul id="js-news" class="js-hidden">
+                                <li class="news-item" style="font-size: 10px !important;">Trước khi đầu tư hãy tìm hiểu kỹ thông tin về bất động sản Nha Trang.</li>
+                                <li class="news-item" style="font-size: 10px !important;">Dưới đây là những thông tin bổ ích và chính thống được chúng tôi chia sẻ.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Trending Top -->
+                    <div class="trending-top mb-30">
+                        <div class="trend-top-img" id="news-1">
+                            <img src="/myfiles/@Model.Top3News[0].ImgAvar" alt="">
+                            <div class="trend-top-cap">
+                                <span style="background-color: #CCE5FF">Xem</span>
+                                <div style="display: flex">
+                                    <h2 class="title-news-item-home">
+                                        <a>@Model.Top3News[0].Title</a>
+                                    </h2>
+                                    <p class="title-news-item-home title-news-item-home-2 "><i class="bi bi-calendar-minus"></i>@Model.Top3News[0].DateUp</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Trending Bottom -->
+                    <div class="trending-bottom">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="single-bottom mb-35">
+                                    <div class="trend-bottom-img mb-30" id="news-2">
+                                        @{ int indexNews = 0;}
+                                        @foreach (var news in Model.Top3News )
+                                        {
+                                            if (indexNews!=0)
+                                            {
+                                                <div class="trand-right-single d-flex">
+                                                    <div class="trand-right-img">
+                                                        <img src="myfiles/@news.ImgAvar" alt="">
+                                                    </div>
+                                                    <div class="trand-right-cap">
+                                                        <div style="display: flex">
+                                                            <span class="color3">#Hastag</span>
+                                                            <p class="title-news-item-home-2 date-news-item2"><i class="bi bi-calendar-minus"></i>@news.DateUp.ToString("dd/MM/yyyy")</p>
+                                                        </div>
+                                                        <h4>
+                                                            <a href="@news.NewsId">@news.Title</a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            }
+                                            indexNews++;
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Căn hộ -->
+<!-- Đất nền start -->
+<div class="weekly-news-area pt-50">
+    <div class="container">
+        <div class="weekly-wrapper">
+            <!-- section Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle mb-30">
+                        <h3>Đất nền</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="weekly-news-active dot-style d-flex dot-style" id="DatNen">
+                        @foreach (var product in Model.Top3DatNen)
+                        {
+                            <div class="weekly-single active">
+                                <div class="weekly-img">
+                                    <img src="/myfiles/@product.ImgAvar" alt="">
+                                </div>
+                                <div class="weekly-caption">
+                                    <div style="display: flex">
+                                        <span class="color1">Strike</span>
+                                        <p class="price-item1 color-price">@product.LetterPrice VND</p>
+                                    </div>
+                                    <h4>
+                                        <a href="@product.ProductId" class="title-pro-home">@product.ProductName</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Đất nền -->
+<!--  Nhà phố start -->
+<div class="weekly-news-area pt-50">
+    <div class="container">
+        <div class="weekly-wrapper">
+            <!-- section Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle mb-30">
+                        <h3>Nhà phố</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="weekly-news-active dot-style d-flex dot-style" id="NhaPho">
+                        @foreach (var product in Model.Top3NhaPho)
+                        {
+                            <div class="weekly-single active">
+                                <div class="weekly-img">
+                                    <img src="/myfiles/@product.ImgAvar" alt="">
+                                </div>
+                                <div class="weekly-caption">
+                                    <div style="display: flex">
+                                        <span class="color1">Strike</span>
+                                        <p class="price-item1 color-price">@product.LetterPrice VND</p>
+                                    </div>
+                                    <h4>
+                                        <a href="@product.ProductId" class="title-pro-home">@product.ProductName</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Nhà phố -->
+<!--   Weekly-News start -->
+<div class="weekly-news-area pt-50">
+    <div class="container">
+        <div class="weekly-wrapper">
+            <!-- section Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle mb-30">
+                        <h3>Căn hộ</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="weekly-news-active dot-style d-flex dot-style" id="CanHo">
+                        @foreach (var product in Model.Top3CanHo)
+                        {
+                            <div class="weekly-single active">
+                                <div class="weekly-img">
+                                    <img src="/myfiles/@product.ImgAvar" alt="">
+                                </div>
+                                <div class="weekly-caption">
+                                    <div style="display: flex">
+                                        <span class="color1">Strike</span>
+                                        <p class="price-item1 color-price">@product.LetterPrice VND</p>
+                                    </div>
+                                    <h4>
+                                        <a href="@product.ProductId" class="title-pro-home">@product.ProductName</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Biệt thự -->
+<!--   Weekly-News start -->
+<div class="weekly-news-area pt-50">
+    <div class="container">
+        <div class="weekly-wrapper">
+            <!-- section Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle mb-30">
+                        <h3>Biệt thự</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="weekly-news-active dot-style d-flex dot-style" id="BietThu">
+                        @foreach (var product in Model.Top3BietThu)
+                        {
+                            <div class="weekly-single active">
+                                <div class="weekly-img">
+                                    <img src="/myfiles/@product.ImgAvar" alt="">
+                                </div>
+                                <div class="weekly-caption">
+                                    <div style="display: flex">
+                                        <span class="color1">Strike</span>
+                                        <p class="price-item1 color-price">@product.LetterPrice VND</p>
+                                    </div>
+                                    <h4>
+                                        <a href="@product.ProductId" class="title-pro-home">@product.ProductName</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

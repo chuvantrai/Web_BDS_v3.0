@@ -1,0 +1,41 @@
+.logo-text img{
+    height: 3.7rem;
+}
+.color-price{
+    color: #2eff72 !important;
+}
+.color5{
+    background: #1E9EFF;
+}
+.color6{
+    background: #36AEFC;
+}
+.color7{
+    background: #6c757d;
+}
+.text-color1{
+    color: #6c757d;
+}
+.text-col2{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.text-col1{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+.ratio-news{
+    aspect-ratio: 1.7;
+}
+@media (max-width: 767px) {
+    .btn-more{
+        padding: 6px;
+        border-radius: 30px;
+        color: #ffff;
+    }
+    
+}

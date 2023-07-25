@@ -1,0 +1,25 @@
+.banner-news-img{
+    border-radius: 13px !important;
+}
+.banner-tag{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    border-radius: 0px 0px 0px 12px;
+    padding: 4px 14px;
+}
+.banner-news{
+    border-radius: 4px;
+}
+@media (max-width: 767px) {
+    .banner-news{
+        background: #f7f7f7;
+        padding-top: 15px;
+    }    
+    .banner-news p{
+        margin-bottom: 0px;
+    }
+    .banner-news h4{
+        font-size: 16px !important;
+    }
+}
