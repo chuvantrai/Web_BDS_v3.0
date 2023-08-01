@@ -21,7 +21,7 @@ public class NewsController : ControllerBase
         _context = context;
         _extensionFile = extensionFile;
     }
-
+    
     [HttpGet]
     public async Task<ActionResult> NewsDetailData(int? id)
     {
@@ -34,8 +34,6 @@ public class NewsController : ControllerBase
                 news.Top3News = await _context.News.Where(x => x.NewsId != id).Skip(0).Take(4).ToListAsync();
                 return Ok(news);
             }
-
-            return NotFound("NullData");
         }
 
         return NotFound("NullData");

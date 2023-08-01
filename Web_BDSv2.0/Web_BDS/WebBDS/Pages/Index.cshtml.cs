@@ -10,14 +10,7 @@ namespace WebBDS.Pages
     public class IndexModel : PageModel
     {
         private readonly HttpClient _client = null;
-        private string _serviceUrl = "";
-        
-        public List<News> Top3News { get; set; }
-        public List<Product> Top3CanHo { get; set; }
-        public List<Product> Top3DatNen { get; set; }
-        public List<Product> Top3NhaPho { get; set; }
-        public List<Product> Top3BietThu { get; set; }
-        
+        private string _serviceUrl { get; set; }
         public IndexModel(HttpClient client)
         {
             _client = new HttpClient();
@@ -26,6 +19,12 @@ namespace WebBDS.Pages
             _serviceUrl = "http://localhost:5000/";
         }
         
+        public List<News> Top3News { get; set; }
+        public List<Product> Top3CanHo { get; set; }
+        public List<Product> Top3DatNen { get; set; }
+        public List<Product> Top3NhaPho { get; set; }
+        public List<Product> Top3BietThu { get; set; }
+
         public async Task<IActionResult> OnGet()
         {
             try

@@ -1,0 +1,71 @@
+﻿@page "/tao-bat-dong-san"
+@using WebBDS.Application.DataStatic
+@model WebBDS.Pages.Private.Product.CreateProduct
+
+@{
+    
+}
+<style>
+    textarea{
+        line-height: 1.5em;
+        padding-top: 0.5rem;
+    }
+</style>
+<section class="whats-news-area pt-30 pb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 border-title-head">
+                <div class="section-tittle mb-30">
+                    <h3>Tạo bất động sản</h3>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 border-fil">
+                <label class="text-black-50 m-0">Tên BĐS <span class="text-danger">*</span></label>
+                <input type="text" name="ProductName" placeholder="Tên BĐS" required class="single-input-primary">
+                <div class="row">
+                    <div class="col-6">
+                        <p class="text-black-50 m-0">Loại BĐS </p>
+                        @* <input type="text" name="CategoryId" placeholder="Loại BĐS" required class="single-input-primary"> *@
+                        <select id="category-checkbox">
+                            @foreach (var category in CategoryProduct.AllCategoryProduct)
+                            {
+                                <option value="@category.CategoryId">@category.CategoryName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-black-50 m-0">Khu vực </p>
+                        @* <input type="text" name="RegionalId" placeholder="Khu vực" required class="single-input-primary"> *@
+                        <select id="address-checkbox">
+                            @foreach (var address in AddressProduct.AllAddressProduct)
+                            {
+                                <option value="@address.RegionalId">@address.RegionalName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <label class="text-black-50 m-0">Giá <span class="text-danger">*</span></label>
+                <input type="text" id="NoPrice" name="NoPrice" placeholder="Giá" required class="single-input-primary">
+                <label class="text-black-50 m-0">Diện tích <span class="text-danger">*</span></label>
+                <input type="text" id="AreaM2" name="AreaM2" placeholder="Diện tích" required class="single-input-primary">
+                <label class="text-black-50 m-0">Mặt tiền </label>
+                <input type="text" id="HorizontalM" name="HorizontalM" placeholder="Mặt tiền" class="single-input-primary">
+                <label class="text-black-50 m-0">Link GoogleMap </label>
+                <input type="text" name="LinkGgmap" placeholder="Link GoogleMap" class="single-input-primary">
+                <label class="text-black-50 m-0">Mô tả <span class="text-danger">*</span></label>
+                <textarea type="text" rows="5" name="Description" placeholder="Mô tả" required class="single-input-primary" style="line-height: 30px"></textarea>
+                <label class="text-black-50 m-0">Ảnh chính BĐS <span class="text-danger">*</span></label>
+                <input type="text" name="ImgAvar" placeholder="Ảnh chính BĐS" required class="single-input-primary">
+                <label class="text-black-50 m-0">Ảnh khác BĐS </label>
+                <input type="text" name="ImgOther" placeholder="Ảnh khác BĐS" required class="single-input-primary">
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+$(document).ready(function() {
+  InputMask('NoPrice',1);
+  InputMask('AreaM2',1);
+  InputMask('HorizontalM',1);
+});
+</script>

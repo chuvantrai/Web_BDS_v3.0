@@ -9,6 +9,11 @@
     border-radius: 8px;
     border-color: #999999a8;
 }
+.border-date-card-product{
+    justify-content: space-between;
+    padding-right: 1em;
+    padding-left: 1em;
+}
 @media (max-width: 767px) {
     .filter-border{
         display: grid;
@@ -37,9 +42,26 @@
     .border-checkbox{
         align-items: center;
         height: 2rem;
-        padding-right: 0.5rem;
+        padding-left: 1.5rem;
     }
     .border-checkbox .text-checkbox{
         max-width: 90%;
+    }
+    .popup-category{
+        padding-right: 2rem;
+    }
+    .address-checkbox ul{
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    }
+    .address-checkbox li{
+        font-weight: 400 !important;
+        font-size: 1em !important;
+    }
+    .address-checkbox span{
+        font-weight: 400 !important;
+        font-size: 1em !important;
+    }
+    .sort-checkbox .open{
+        max-width: 10.5rem;
     }
 }

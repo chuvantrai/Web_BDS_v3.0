@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g/3jO8Jyq4N6/pyWbz52cTe/SgOqqeHDS32LjV8FU+I=",
+  "Hash": "R1ZeLWM5lZ5h4J8rCQ58mNCeAd+Kv8Fws1dXnH75LA8=",
   "Source": "WebBDS",
   "BasePath": "_content/WebBDS",
   "Mode": "Default",
@@ -4267,6 +4267,23 @@
       "OriginalItemSpec": "wwwroot\\js\\HomeView.js"
     },
     {
+      "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\js\\Layout.js",
+      "SourceId": "WebBDS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\",
+      "BasePath": "_content/WebBDS",
+      "RelativePath": "js/Layout.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Layout.js"
+    },
+    {
       "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\js\\NewsDetailView.js",
       "SourceId": "WebBDS",
       "SourceType": "Discovered",
@@ -4299,6 +4316,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\ProductListView.js"
+    },
+    {
+      "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\lib\\jquery.inputmask.min.js",
+      "SourceId": "WebBDS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\",
+      "BasePath": "_content/WebBDS",
+      "RelativePath": "lib/jquery.inputmask.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery.inputmask.min.js"
     },
     {
       "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\Magazine_News Doc\\css\\font-awesome.min.css",

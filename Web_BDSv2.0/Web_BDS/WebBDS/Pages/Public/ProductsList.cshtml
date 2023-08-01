@@ -1,0 +1,287 @@
+﻿@page "/bat-dong-san"
+@using WebBDS.Application.DataStatic
+@using WebBDS.Emuns
+@using WebBDS.Extensions
+@model WebBDS.Pages.Public.ProductsList
+
+<link rel="stylesheet" href="/css/NewsList.css">
+<link rel="stylesheet" href="/css/ProductsList.css">
+<!-- Whats New Start -->
+<section class="whats-news-area pt-30 pb-20">
+<div class="container">
+<div class="row">
+<div class="col-lg-8">
+    <div class="row d-flex justify-content-between">
+        <div class="col-lg-3 col-md-3 border-title-head">
+            <div class="section-tittle mb-30">
+                <h3>Bất động sản</h3>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9 border-fil">
+            <div class="properties__button">
+                <!--Nav Button  -->
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <div class="filter-border">
+                            <button type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                                <i class="bi bi-funnel"></i>
+                            </button>
+                        </div>
+                        <form action="#" class="search-border">
+                            <div class="form-group input-search">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Tìm bđs" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm bđs'">
+                                    <div class="input-group-append">
+                                        <button class="btns color6" type="button">
+                                            <i class="ti-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+                <!--End Nav Button  -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <!-- Nav Card -->
+            <div class="tab-content" id="nav-tabContent">
+                <!-- card one -->
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="whats-news-caption">
+                        <div class="row" style="padding: 0px 15px 0px 15px;">
+                            @* Card san pham *@
+                            <div class="col-lg-6 col-md-6 mb-3 border banner-news">
+                                <div class="single-what-news mb-15">
+                                    <div class="what-img" style="position: relative;">
+                                        <img class="ratio-news banner-news-img" src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" alt="">
+                                        <span class="color1 banner-tag">Night party</span>
+                                    </div>
+                                    <div class="">
+                                        @* <span class="color1">Night party</span> *@
+                                        <div class="row border-date-card-product">
+                                            <div class="text-black-50">08/09/2020</div>
+                                            <div class="text-danger"><span>9 tỷ</span> &#8901; <span>73,5 m²</span></div>
+                                        </div>
+                                        <h4 class="text-col2">
+                                            <a href="#">Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng</a>
+                                        </h4>
+                                        <div>
+                                            <div class="address-product"><i class="ti-location-pin"></i> Ninh Hiệp, Ninh Hòa, Khánh Hòa</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @* tin nổi bật nhất end *@
+                            <div class="col-lg-6 col-md-6 mb-3 border banner-news">
+                                <div class="single-what-news mb-15">
+                                    <div class="what-img" style="position: relative;">
+                                        <img class="ratio-news banner-news-img" src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" alt="">
+                                        <span class="color1 banner-tag">Night party</span>
+                                    </div>
+                                    <div class="">
+                                        @* <span class="color1">Night party</span> *@
+                                        <div class="row border-date-card-product">
+                                            <div class="text-black-50">08/09/2020</div>
+                                            <div class="text-danger"><span>9 tỷ</span> &#8901; <span>73,5 m²</span></div>
+                                        </div>
+                                        <h4 class="text-col2">
+                                            <a href="#">Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng</a>
+                                        </h4>
+                                        <div>
+                                            <div class="address-product"><i class="ti-location-pin"></i> Ninh Hiệp, Ninh Hòa, Khánh Hòa</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mb-3 border banner-news">
+                                <div class="single-what-news mb-15">
+                                    <div class="what-img" style="position: relative;">
+                                        <img class="ratio-news banner-news-img" src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" alt="">
+                                        <span class="color1 banner-tag">Night party</span>
+                                    </div>
+                                    <div class="">
+                                        @* <span class="color1">Night party</span> *@
+                                        <div class="row border-date-card-product">
+                                            <div class="text-black-50">08/09/2020</div>
+                                            <div class="text-danger"><span>9 tỷ</span> &#8901; <span>73,5 m²</span></div>
+                                        </div>
+                                        <h4 class="text-col2">
+                                            <a href="#">Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng</a>
+                                        </h4>
+                                        <div>
+                                            <div class="address-product"><i class="ti-location-pin"></i> Ninh Hiệp, Ninh Hòa, Khánh Hòa</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Nav Card -->
+        </div>
+    </div>
+</div>
+<!--Start pagination -->
+<div class="pagination-area pb-45 text-center pt-25 pb-10 w-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="single-wrap d-flex justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <span class="flaticon-arrow roted"></span>
+                                </a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">01</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">02</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">03</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <span class="flaticon-arrow right-arrow"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End pagination  -->
+<div class="col-lg-4">
+    <!-- Section Tittle -->
+    <div class="section-tittle mb-40">
+        <h3>Follow Us</h3>
+    </div>
+    <!-- Flow Socail -->
+    <div class="single-follow mb-45">
+        <div class="single-box">
+            <div class="follow-us d-flex align-items-center">
+                <div class="follow-social">
+                    <a href="#">
+                        <img src="/assets/img/news/icon-fb.png" alt="">
+                    </a>
+                </div>
+                <div class="follow-count">
+                    <span>8,045</span>
+                    <p>Fans</p>
+                </div>
+            </div>
+            <div class="follow-us d-flex align-items-center">
+                <div class="follow-social">
+                    <a href="#">
+                        <img src="/assets/img/news/icon-tw.png" alt="">
+                    </a>
+                </div>
+                <div class="follow-count">
+                    <span>8,045</span>
+                    <p>Fans</p>
+                </div>
+            </div>
+            <div class="follow-us d-flex align-items-center">
+                <div class="follow-social">
+                    <a href="#">
+                        <img src="/assets/img/news/icon-ins.png" alt="">
+                    </a>
+                </div>
+                <div class="follow-count">
+                    <span>8,045</span>
+                    <p>Fans</p>
+                </div>
+            </div>
+            <div class="follow-us d-flex align-items-center">
+                <div class="follow-social">
+                    <a href="#">
+                        <img src="/assets/img/news/icon-yo.png" alt="">
+                    </a>
+                </div>
+                <div class="follow-count">
+                    <span>8,045</span>
+                    <p>Fans</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New Poster -->
+    <div class="news-poster d-none d-lg-block">
+        <img src="/assets/img/news/news_card.jpg" alt="">
+    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Whats New End -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Lọc thông tin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex">
+                    <div class="single-element-widget w-50">
+                        <h6 class="mb-10 text-color1 ">Khu vực BĐS</h6>
+                        <div class="default-select address-checkbox">
+                            <select id="address-checkbox">
+                                @foreach (var address in AddressProduct.AllAddressProduct)
+                                {
+                                    <option value="@address.RegionalId">@address.RegionalName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="single-element-widget w-50">
+                        <h6 class="mb-10 text-color1 ">Sắp xếp</h6>
+                        <div class="default-select address-checkbox sort-checkbox">
+                            <select>
+                                @foreach (SortProductEnum address in Enum.GetValues(typeof(SortProductEnum)))
+                                {
+                                    <option value="@((int)address)">@ExpressionLogic.GetEnumDescription(address)</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div class="single-element-widget mt-2">
+                        <h6 class="mb-10 text-color1 ">Loại BĐS</h6>
+                        <div class="d-flex flex-wrap popup-category">
+                            @foreach (var category in CategoryProduct.AllCategoryProduct)
+                            {
+                                <div class="switch-wrap d-flex justify-content-between w-50 border-checkbox" for="default-checkbox">
+                                    <label class="m-0 text-col1 text-checkbox" for="checkbox@(category.CategoryId)">@category.CategoryName</label>
+                                    <div class="primary-checkbox">
+                                        <input type="checkbox" id="checkbox@(category.CategoryId)" name="CategoryProduct" value="@category.CategoryId">
+                                        <label for="checkbox@(category.CategoryId)"> </label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-modal color7" data-dismiss="modal">đóng</button>
+                <button type="button" class="btn-modal color5" data-dismiss="modal">Tìm kiếm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/ProductListView.js"></script>

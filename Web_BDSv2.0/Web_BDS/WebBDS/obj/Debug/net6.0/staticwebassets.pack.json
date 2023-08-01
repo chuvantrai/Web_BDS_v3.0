@@ -1233,12 +1233,20 @@
       "PackagePath": "staticwebassets\\js\\HomeView.js"
     },
     {
+      "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\js\\Layout.js",
+      "PackagePath": "staticwebassets\\js\\Layout.js"
+    },
+    {
       "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\js\\NewsDetailView.js",
       "PackagePath": "staticwebassets\\js\\NewsDetailView.js"
     },
     {
       "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\js\\ProductListView.js",
       "PackagePath": "staticwebassets\\js\\ProductListView.js"
+    },
+    {
+      "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\lib\\jquery.inputmask.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery.inputmask.min.js"
     },
     {
       "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\myfiles\\038fc790-6386-4642-88e2-23d3d665510d.png",

@@ -28,6 +28,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/_MyProject/Web_BDS_v3.0/Web_BDSv2.0/Web_BDS/WebBDS/Pages/Private/Product/CreateProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmF0ZVxQcm9kdWN0XENyZWF0ZVByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/_MyProject/Web_BDS_v3.0/Web_BDSv2.0/Web_BDS/WebBDS/Pages/Public/NewsDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVibGljXE5ld3NEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/_MyProject/Web_BDS_v3.0/Web_BDSv2.0/Web_BDS/WebBDS/Pages/Public/NewsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVibGljXE5ld3NMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/_MyProject/Web_BDS_v3.0/Web_BDSv2.0/Web_BDS/WebBDS/Pages/Public/ProductsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVibGljXFByb2R1Y3RzTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/_MyProject/Web_BDS_v3.0/Web_BDSv2.0/Web_BDS/WebBDS/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
