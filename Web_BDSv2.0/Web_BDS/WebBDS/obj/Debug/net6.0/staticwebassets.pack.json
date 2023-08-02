@@ -1209,6 +1209,10 @@
       "PackagePath": "staticwebassets\\images\\error.gif"
     },
     {
+      "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\hinh-nen-xam.jpg",
+      "PackagePath": "staticwebassets\\images\\hinh-nen-xam.jpg"
+    },
+    {
       "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\log-in.png",
       "PackagePath": "staticwebassets\\images\\log-in.png"
     },
@@ -1227,6 +1231,14 @@
     {
       "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\synchronize.png",
       "PackagePath": "staticwebassets\\images\\synchronize.png"
+    },
+    {
+      "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\upload-image.png",
+      "PackagePath": "staticwebassets\\images\\upload-image.png"
+    },
+    {
+      "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\upload-many-image.png",
+      "PackagePath": "staticwebassets\\images\\upload-many-image.png"
     },
     {
       "Id": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\js\\HomeView.js",

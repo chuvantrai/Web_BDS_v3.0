@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "R1ZeLWM5lZ5h4J8rCQ58mNCeAd+Kv8Fws1dXnH75LA8=",
+  "Hash": "oQFXv1IJJ2k3kt4avvqCyueo84o/J0Rks5zdqr11rSE=",
   "Source": "WebBDS",
   "BasePath": "_content/WebBDS",
   "Mode": "Default",
@@ -4165,6 +4165,23 @@
       "OriginalItemSpec": "wwwroot\\images\\error.gif"
     },
     {
+      "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\hinh-nen-xam.jpg",
+      "SourceId": "WebBDS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\",
+      "BasePath": "_content/WebBDS",
+      "RelativePath": "images/hinh-nen-xam.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\hinh-nen-xam.jpg"
+    },
+    {
       "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\log-in.png",
       "SourceId": "WebBDS",
       "SourceType": "Discovered",
@@ -4248,6 +4265,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\synchronize.png"
+    },
+    {
+      "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\upload-image.png",
+      "SourceId": "WebBDS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\",
+      "BasePath": "_content/WebBDS",
+      "RelativePath": "images/upload-image.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\upload-image.png"
+    },
+    {
+      "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\images\\upload-many-image.png",
+      "SourceId": "WebBDS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\",
+      "BasePath": "_content/WebBDS",
+      "RelativePath": "images/upload-many-image.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\upload-many-image.png"
     },
     {
       "Identity": "C:\\_MyProject\\Web_BDS_v3.0\\Web_BDSv2.0\\Web_BDS\\WebBDS\\wwwroot\\js\\HomeView.js",
