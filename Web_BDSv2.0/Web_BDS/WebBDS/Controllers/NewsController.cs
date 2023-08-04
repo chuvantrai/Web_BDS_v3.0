@@ -14,9 +14,9 @@ namespace WebBDS.Controllers;
 public class NewsController : ControllerBase
 {
     private readonly Bds_CShapContext _context;
-    private readonly ExtensionFile _extensionFile;
+    private readonly IExtensionFile _extensionFile;
 
-    public NewsController(Bds_CShapContext context, ExtensionFile extensionFile)
+    public NewsController(Bds_CShapContext context, IExtensionFile extensionFile)
     {
         _context = context;
         _extensionFile = extensionFile;

@@ -15,9 +15,9 @@ namespace WebBDS.Controllers;
 public class ProductController : ControllerBase
 {
     private readonly Bds_CShapContext _context;
-    private readonly ExtensionFile _extensionFile;
+    private readonly IExtensionFile _extensionFile;
 
-    public ProductController(Bds_CShapContext context, ExtensionFile extensionFile)
+    public ProductController(Bds_CShapContext context, IExtensionFile extensionFile)
     {
         _context = context;
         _extensionFile = extensionFile;
@@ -198,55 +198,49 @@ public class ProductController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateProduct([FromForm] CreateProductRequest createProductRequest)
+    public async Task<ActionResult> CreateProduct([FromForm]CreateProductRequest createProductRequest)
     {
-        var product = new Product
+        try
         {
-            ProductName = createProductRequest.ProductName,
-            Description = createProductRequest.Description,
-            CategoryId = createProductRequest.CategoryId,
-            RegionalId = createProductRequest.RegionalId,
-            LetterPrice = createProductRequest.LetterPrice,
-            NoPrice = createProductRequest.NoPrice,
-            DateUp = DateTime.Now,
-            LinkGgmap = createProductRequest.LinkGgmap,
-            AreaM2 = createProductRequest.AreaM2,
-            HorizontalM = createProductRequest.HorizontalM,
-            Status = createProductRequest.Status
-        };
-        if (createProductRequest.ImgAvar is not null)
-        {
-            product.ImgAvar = await _extensionFile.CreateImage(createProductRequest.ImgAvar);
-        }
-        else
-        {
-            return BadRequest("quá trình up ảnh lỗi!");
-        }
-
-        await _context.Products.AddAsync(product);
-        // var productResult = JsonConvert.SerializeObject(product);
-
-        if (createProductRequest.ListImgOther is not null)
-        {
-            try
+            var product = new Product
+            {
+                ProductName = createProductRequest.ProductName,
+                Description = createProductRequest.Description,
+                CategoryId = createProductRequest.CategoryId,
+                RegionalId = createProductRequest.RegionalId,
+                NoPrice = createProductRequest.NoPrice,
+                LetterPrice = ExpressionLogic
+                    .ConvertPriceToString(createProductRequest.NoPrice),
+                DateUp = DateTime.Now,
+                LinkGgmap = createProductRequest.LinkGgmap,
+                AreaM2 = createProductRequest.AreaM2,
+                HorizontalM = createProductRequest.HorizontalM,
+                Status = true,
+                ImgAvar = createProductRequest.ImgAvatar
+            };
+            
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
+            // var productResult = JsonConvert.SerializeObject(product);
+            
+            if (createProductRequest.ListImgOther != null)
             {
                 foreach (var imgFile in createProductRequest.ListImgOther)
                 {
-                    await _context.ImageProducts.AddAsync(new ImageProduct()
+                    await _context.ImageProducts.AddAsync(new ImageProduct
                     {
                         ProductId = product.ProductId,
-                        ImgName = await _extensionFile.CreateImage(imgFile)
+                        ImgName = imgFile
                     });
                 }
             }
-            catch
-            {
-                return BadRequest("quá trình up ảnh lỗi!");
-            }
+            await _context.SaveChangesAsync();
+            return Ok();
         }
-
-        await _context.SaveChangesAsync();
-        return Ok(product);
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
     }
 
     [HttpPut]

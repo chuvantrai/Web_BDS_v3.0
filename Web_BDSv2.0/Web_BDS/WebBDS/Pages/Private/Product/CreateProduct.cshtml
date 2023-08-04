@@ -95,7 +95,7 @@
                 <input type="text" id="NoPrice" placeholder="Giá" required class="single-input-primary">
                 <label class="text-black-50 m-0">Diện tích <span class="text-danger">*</span></label>
                 <input type="text" id="AreaM2" placeholder="Diện tích" required class="single-input-primary">
-                <label class="text-black-50 m-0">Mặt tiền </label>
+                <label class="text-black-50 m-0">Mặt tiền (m²) <span class="text-danger">*</span></label>
                 <input type="text" id="HorizontalM" placeholder="Mặt tiền" class="single-input-primary">
                 <label class="text-black-50 m-0">Link GoogleMap </label>
                 <input type="text" name="LinkGgmap" placeholder="Link GoogleMap" class="single-input-primary">
@@ -135,7 +135,7 @@
 
                 </div>
                 <div class="border-submit">
-                    <button onclick="CreateProduct()" type="button" class="btn-modal color5 w-50">Tạo BĐS</button>
+                    <button onclick="SubmitFrom()" type="button" class="btn-modal color5 w-50">Tạo BĐS</button>
                 </div>
             </div>
         </div>
@@ -153,7 +153,7 @@ let Description = $('#Description').val();
 let imageMain = $('#file-image-main');
 let imageOther = $('#file-image-other');
 $(document).ready(function() {
-  InputMask('NoPrice',1);
+  InputMask('NoPrice',0);
   InputMask('AreaM2',1);
   InputMask('HorizontalM',1);
 });
@@ -189,15 +189,78 @@ function ChangeImage(idImg,idImgBg,file) {
       reader.readAsDataURL(file.files[0]);
     }
 }
-function CreateProduct() {
-    debugger
-  if (productName !== '' && noPrice !== '' && AreaM2 !== '' &&
+function SetValueProduct() {
+  productName = $('#ProductName').val();
+  categoryCheckbox = $('#category-checkbox').val();
+  addressCheckbox = $('#address-checkbox').val();
+  noPrice = $('#NoPrice').val();
+  AreaM2 = $('#AreaM2').val();
+  HorizontalM = $('#HorizontalM').val();
+  LinkGgmap = $('#LinkGgmap').val();
+  Description = $('#Description').val();
+  imageMain = $('#file-image-main');
+  imageOther = $('#file-image-other');
+}
+function SubmitFrom() {
+    SetValueProduct();
+    if (productName !== '' && noPrice !== '' && AreaM2 !== '' &&
     HorizontalM !== '' && Description !== '' &&
     imageMain[0].files[0] != null && imageOther[0].files[0] != null){
-       CreateImageProduct(imageMain,imageOther);
-  }
+        var listFormData = ConverToFormData(imageOther[0].files,imageMain[0].files[0]);
+       CreateImageProduct(listFormData);
+    }
 }
-function CreateImageProduct(imageMain,imageOther) {
-  
+let nameImageMain = [];
+let nameImageOther = [];
+function CreateImageProduct(imageFiles) {
+  $.ajax({
+      url: '/api/File/CreateListImage',
+      type: "POST",
+      data: imageFiles,
+      contentType: false,
+      processData: false,
+      success: function (response) {
+          CreateProduct(response.data);
+      },
+      error: function () {
+          alert('Tạo thất bại');
+      }
+  });
+}
+function ConverToFormData(listFile,fileMain) {
+    var formData = new FormData();
+    formData.append('imageFile', fileMain);
+    for (var i = 0; i < listFile.length; i++) {
+        formData.append('imageFile', listFile[i]);
+    }
+    return formData;
+}
+
+
+function CreateProduct(listImage) {
+  const imgAvatar = listImage[0];
+  listImage.shift();
+  $.ajax({
+    url: '/api/Product/CreateProduct',
+    type: "POST",
+    data: {
+        ProductName: productName,
+        CategoryId: categoryCheckbox,
+        RegionalId: addressCheckbox,
+        NoPrice: noPrice.replace(/,/g, ""),
+        AreaM2: AreaM2.replace(/,/g, ""),
+        HorizontalM: HorizontalM.replace(/,/g, ""),
+        LinkGgmap: LinkGgmap,
+        Description: Description,
+        ImgAvatar: imgAvatar,
+        ListImgOther: listImage,
+    },
+    success: function (response) {
+        alert('Tạo thành công');
+    },
+    error: function () {
+        alert('Tạo thất bại');
+    }
+  });
 }
 </script>

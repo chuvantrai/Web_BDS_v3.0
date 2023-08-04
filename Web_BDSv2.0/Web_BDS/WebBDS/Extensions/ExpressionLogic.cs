@@ -243,4 +243,20 @@ public static class ExpressionLogic
         }
         return value.ToString();
     }
+    
+    public static string ConvertPriceToString(double number)
+    {
+        const double billion = 1000000000;
+        const double million = 1000000;
+        const double thousand = 1000;
+
+        if (number >= billion)
+            return $"{number / billion}Tỷ";
+        if (number >= million)
+            return $"{number / million}Triệu";
+        if (number >= thousand)
+            return $"{number / thousand}K";
+
+        return number.ToString();
+    }
 }
