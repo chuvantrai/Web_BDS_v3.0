@@ -28,8 +28,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     @* css *@
     <link rel="stylesheet" href="/css/Shared_Layout.css">
+    <link rel="stylesheet" href="~/css/Loading.css">
     @* js *@
-    
+    <script src="/js/Layout.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -175,6 +176,10 @@
 <main>
     @RenderBody()
 </main>
+<!-- Overlay loading -->
+<div class="overlay" id="loading-overlay">
+    <div class="loader"></div>
+</div>
 <!-- Footer -->
 <footer>
     <!-- Footer Start-->
@@ -264,7 +269,7 @@
         <script src="/assets/js/plugins.js"></script>
         <script src="/assets/js/main.js"></script>
         <script src="lib/jquery.inputmask.min.js"></script>
-        <script src="/js/Layout.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 
 </body>

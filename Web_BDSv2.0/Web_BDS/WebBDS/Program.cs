@@ -9,6 +9,7 @@ builder.Services.AddRazorPages();
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IExtensionFile,ExtensionFile>();
+builder.Services.AddSingleton<IMapObject,MapObject>();
 builder.Services.AddSingleton<Bds_CShapContext>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

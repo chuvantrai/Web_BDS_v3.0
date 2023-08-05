@@ -16,11 +16,13 @@ public class ProductController : ControllerBase
 {
     private readonly Bds_CShapContext _context;
     private readonly IExtensionFile _extensionFile;
+    private readonly IMapObject _MapObject;
 
-    public ProductController(Bds_CShapContext context, IExtensionFile extensionFile)
+    public ProductController(Bds_CShapContext context, IExtensionFile extensionFile, IMapObject mapObject)
     {
         _context = context;
         _extensionFile = extensionFile;
+        _MapObject = mapObject;
     }
 
     [HttpGet]
@@ -45,160 +47,93 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult> ProductListData2([FromQuery] ProductListDataRequest request)
-    {
-        var pageSize = 3;
-        var productListResponse = new ProductListResponse();
-        if (request.pageIndex == 0) request.pageIndex = 1;
-        Expression<Func<Product, bool>> whereExpression = x => true;
-        Expression<Func<Product, string?>> sortExpression = x => null;
-        Expression<Func<Product, bool>> exprCategory = x => false;
-        Expression<Func<Product, bool>> exprRegional = x => false;
-        Expression<Func<Product, bool>> exprSearch = x => false;
-
-        if (request.categoryProduct is not null)
-        {
-            exprCategory = exprCategory.Or(x => x.CategoryId == (int)request.categoryProduct);
-            whereExpression = whereExpression.And(exprCategory);
-        }
-
-        if (request.listRegional is not null)
-        {
-            foreach (var regional in request.listRegional)
-            {
-                exprRegional = exprRegional.Or(x => x.RegionalId == regional);
-                whereExpression = whereExpression.And(exprRegional);
-            }
-        }
-
-        if (!string.IsNullOrEmpty(request.keySearch))
-        {
-            exprSearch = exprSearch.Or(x =>
-                x.ProductName.Contains(request.keySearch) || request.keySearch.Contains(x.ProductName));
-            whereExpression = whereExpression.And(exprSearch);
-        }
-
-        var bySort = "";
-
-        switch (request.sort)
-        {
-            case SortProductsEnum.Latest:
-                bySort = "-DateUp";
-                break;
-            case SortProductsEnum.Oldest:
-                bySort = "DateUp";
-                break;
-            case SortProductsEnum.HighPrice:
-                bySort = "-AreaM2";
-                break;
-            case SortProductsEnum.LowPrice:
-                bySort = "AreaM2";
-                break;
-            case SortProductsEnum.LargeArea:
-                bySort = "-NoPrice";
-                break;
-            case SortProductsEnum.SmallArea:
-                bySort = "NoPrice";
-                break;
-            case SortProductsEnum.LargeWidth:
-                bySort = "-HorizontalM";
-                break;
-            case SortProductsEnum.SmallWidth:
-                bySort = "HorizontalM";
-                break;
-        }
-
-        var totalP = await _context.Products
-            .Where(whereExpression)
-            .CountAsync();
-
-        productListResponse.TotalPage = totalP / pageSize + (totalP % pageSize > 0 ? 1 : 0);
-
-        productListResponse.ProductsList = await _context.Products
-            .Where(whereExpression)
-            .SortBy(bySort)
-            .Skip(pageSize * (request.pageIndex - 1)).Take(pageSize).ToListAsync();
-
-        return Ok(productListResponse);
-    }
-
-    [HttpGet]
     public async Task<ActionResult> ProductListData([FromQuery] ProductListDataRequest request)
     {
-        var pageSize = 3;
-        var productListResponse = new ProductListResponse();
-        if (request.pageIndex == 0) request.pageIndex = 1;
-        Expression<Func<Product, bool>> whereExpression = x => true;
-        Expression<Func<Product, string?>> sortExpression = x => null;
-        Expression<Func<Product, bool>> exprCategory = x => false;
-        Expression<Func<Product, bool>> exprRegional = x => false;
-        Expression<Func<Product, bool>> exprSearch = x => false;
-
-        if (request.categoryProduct is not null)
+        try
         {
-            exprCategory = exprCategory.Or(x => x.CategoryId == (int)request.categoryProduct);
-            whereExpression = whereExpression.And(exprCategory);
-        }
+            var pageSize = request.PageSize == 0 ? 3 : request.PageSize;
+            var productListResponse = new ProductListResponse();
+            if (request.PageIndex == 0) request.PageIndex = 1;
+            Expression<Func<Product, bool>> whereExpression = x => true;
+            Expression<Func<Product, string?>> sortExpression = x => null;
+            Expression<Func<Product, bool>> exprCategory = x => false;
+            Expression<Func<Product, bool>> exprRegional = x => false;
+            Expression<Func<Product, bool>> exprSearch = x => false;
 
-        if (request.listRegional is not null)
-        {
-            foreach (var regional in request.listRegional)
+            if (request.ListCategory is not null)
             {
-                exprRegional = exprRegional.Or(x => x.RegionalId == regional);
+                foreach (var category in request.ListCategory)
+                {
+                    exprCategory = exprCategory.Or(x => x.CategoryId == category);
+                }
+                whereExpression = whereExpression.And(exprCategory);
+            }
+
+            if (request.Regional is not null)
+            {
+                exprRegional = exprRegional.Or(x => x.RegionalId == request.Regional);
                 whereExpression = whereExpression.And(exprRegional);
             }
-        }
 
-        if (!string.IsNullOrEmpty(request.keySearch))
+            if (!string.IsNullOrEmpty(request.KeySearch))
+            {
+                exprSearch = exprSearch.Or(x =>
+                    x.ProductName.Contains(request.KeySearch) || request.KeySearch.Contains(x.ProductName));
+                whereExpression = whereExpression.And(exprSearch);
+            }
+
+            var bySort = "-DateUp";
+
+            switch (request.Sort)
+            {
+                case SortProductEnum.NewProduct:
+                    bySort = "-DateUp";
+                    break;
+                case SortProductEnum.PriceHigh:
+                    bySort = "NoPrice";
+                    break;
+                case SortProductEnum.PriceLow:
+                    bySort = "-NoPrice";
+                    break;
+                case SortProductEnum.PriceMeterLow:
+                    bySort = "PriceM2";
+                    break;
+                case SortProductEnum.PriceMeterHigh:
+                    bySort = "-PriceM2";
+                    break;
+                case SortProductEnum.AcreageHigh:
+                    bySort = "AreaM2";
+                    break;
+                case SortProductEnum.AcreageLow:
+                    bySort = "-AreaM2";
+                    break;
+            }
+
+            var productsList = await _context.Products
+                .Include(x => x.Category)
+                .Include(x => x.Regional)
+                .Include(x => x.ImageProducts)
+                .Where(whereExpression)
+                .Select(x => _MapObject.MapProductResponse(x))
+                .ToListAsync();
+
+            var totalP = productsList.Count;
+            productListResponse.TotalPage = totalP / pageSize + (totalP % pageSize > 0 ? 1 : 0);
+            productListResponse.ProductsList = productsList
+                .SortBy(bySort)
+                .Skip(pageSize * (request.PageIndex - 1))
+                .Take(pageSize).ToList();
+
+            return Ok(productListResponse.ProductsList);
+        }
+        catch (Exception e)
         {
-            exprSearch = exprSearch.Or(x =>
-                x.ProductName.Contains(request.keySearch) || request.keySearch.Contains(x.ProductName));
-            whereExpression = whereExpression.And(exprSearch);
+            return NotFound(e.Message);
         }
-
-        var listSort = new String[] { };
-        if (request.sortWidth is not null)
-        {
-            listSort = listSort.AddToLastArrayStrings(request.sortWidth == SortProductsEnum.Oldest
-                ? "HorizontalM"
-                : "-" + "HorizontalM");
-        }
-
-        if (request.sortArea is not null)
-        {
-            listSort = listSort.AddToLastArrayStrings(request.sortArea == SortProductsEnum.SmallArea
-                ? "AreaM2"
-                : "-" + "AreaM2");
-        }
-
-        if (request.sortPrice is not null)
-        {
-            listSort = listSort.AddToLastArrayStrings(request.sortPrice == SortProductsEnum.LowPrice
-                ? "NoPrice"
-                : "-" + "NoPrice");
-        }
-
-        if (request.sortTime is not null)
-        {
-            listSort = listSort.AddToLastArrayStrings(request.sortTime == SortProductsEnum.Oldest
-                ? "DateUp"
-                : "-" + "DateUp");
-        }
-
-        var totalP = await _context.Products.Where(whereExpression).CountAsync();
-        // var listSort = new String[]{sortByWidth,sortByArea,sortByPrice,sortByTime};
-
-        productListResponse.TotalPage = totalP / pageSize + (totalP % pageSize > 0 ? 1 : 0);
-
-        productListResponse.ProductsList = await _context.Products.Where(whereExpression)
-            .SortBy(listSort)
-            .Skip(pageSize * (request.pageIndex - 1)).Take(pageSize).ToListAsync();
-
-        return Ok(productListResponse);
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateProduct([FromForm]CreateProductRequest createProductRequest)
+    public async Task<ActionResult> CreateProduct([FromForm] CreateProductRequest createProductRequest)
     {
         try
         {
@@ -218,11 +153,11 @@ public class ProductController : ControllerBase
                 Status = true,
                 ImgAvar = createProductRequest.ImgAvatar
             };
-            
+
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
             // var productResult = JsonConvert.SerializeObject(product);
-            
+
             if (createProductRequest.ListImgOther != null)
             {
                 foreach (var imgFile in createProductRequest.ListImgOther)
@@ -234,6 +169,7 @@ public class ProductController : ControllerBase
                     });
                 }
             }
+
             await _context.SaveChangesAsync();
             return Ok();
         }

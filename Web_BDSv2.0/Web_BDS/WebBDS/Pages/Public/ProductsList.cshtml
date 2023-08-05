@@ -30,9 +30,10 @@
                         <form action="#" class="search-border">
                             <div class="form-group input-search">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Tìm bđs" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm bđs'">
+                                    <input id="key-search" type="text" class="form-control" placeholder="Tìm bđs" 
+                                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm bđs'">
                                     <div class="input-group-append">
-                                        <button class="btns color6" type="button">
+                                        <button class="btns color6" type="button" onclick="Search()">
                                             <i class="ti-search"></i>
                                         </button>
                                     </div>
@@ -52,72 +53,8 @@
                 <!-- card one -->
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="whats-news-caption">
-                        <div class="row" style="padding: 0px 15px 0px 15px;">
+                        <div class="row" style="padding: 0px 15px 0px 15px;" id="content-product">
                             @* Card san pham *@
-                            <div class="col-lg-6 col-md-6 mb-3 border banner-news">
-                                <div class="single-what-news mb-15">
-                                    <div class="what-img" style="position: relative;">
-                                        <img class="ratio-news banner-news-img" src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" alt="">
-                                        <span class="color1 banner-tag">Night party</span>
-                                    </div>
-                                    <div class="">
-                                        @* <span class="color1">Night party</span> *@
-                                        <div class="row border-date-card-product">
-                                            <div class="text-black-50">08/09/2020</div>
-                                            <div class="text-danger"><span>9 tỷ</span> &#8901; <span>73,5 m²</span></div>
-                                        </div>
-                                        <h4 class="text-col2">
-                                            <a href="#">Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng</a>
-                                        </h4>
-                                        <div>
-                                            <div class="address-product"><i class="ti-location-pin"></i> Ninh Hiệp, Ninh Hòa, Khánh Hòa</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @* tin nổi bật nhất end *@
-                            <div class="col-lg-6 col-md-6 mb-3 border banner-news">
-                                <div class="single-what-news mb-15">
-                                    <div class="what-img" style="position: relative;">
-                                        <img class="ratio-news banner-news-img" src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" alt="">
-                                        <span class="color1 banner-tag">Night party</span>
-                                    </div>
-                                    <div class="">
-                                        @* <span class="color1">Night party</span> *@
-                                        <div class="row border-date-card-product">
-                                            <div class="text-black-50">08/09/2020</div>
-                                            <div class="text-danger"><span>9 tỷ</span> &#8901; <span>73,5 m²</span></div>
-                                        </div>
-                                        <h4 class="text-col2">
-                                            <a href="#">Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng</a>
-                                        </h4>
-                                        <div>
-                                            <div class="address-product"><i class="ti-location-pin"></i> Ninh Hiệp, Ninh Hòa, Khánh Hòa</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 mb-3 border banner-news">
-                                <div class="single-what-news mb-15">
-                                    <div class="what-img" style="position: relative;">
-                                        <img class="ratio-news banner-news-img" src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" alt="">
-                                        <span class="color1 banner-tag">Night party</span>
-                                    </div>
-                                    <div class="">
-                                        @* <span class="color1">Night party</span> *@
-                                        <div class="row border-date-card-product">
-                                            <div class="text-black-50">08/09/2020</div>
-                                            <div class="text-danger"><span>9 tỷ</span> &#8901; <span>73,5 m²</span></div>
-                                        </div>
-                                        <h4 class="text-col2">
-                                            <a href="#">Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng Địa ốc Nha Trang đón đầu cơ hội tăng trưởng</a>
-                                        </h4>
-                                        <div>
-                                            <div class="address-product"><i class="ti-location-pin"></i> Ninh Hiệp, Ninh Hòa, Khánh Hòa</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,7 +77,7 @@
                                 </a>
                             </li>
                             <li class="page-item active">
-                                <a class="page-link" href="#">01</a>
+                                <a class="page-link" >01</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="#">02</a>
@@ -239,7 +176,7 @@
                     <div class="single-element-widget w-50">
                         <h6 class="mb-10 text-color1 ">Khu vực BĐS</h6>
                         <div class="default-select address-checkbox">
-                            <select id="address-checkbox">
+                            <select id="address-select">
                                 @foreach (var address in AddressProduct.AllAddressProduct)
                                 {
                                     <option value="@address.RegionalId">@address.RegionalName</option>
@@ -250,10 +187,10 @@
                     <div class="single-element-widget w-50">
                         <h6 class="mb-10 text-color1 ">Sắp xếp</h6>
                         <div class="default-select address-checkbox sort-checkbox">
-                            <select>
-                                @foreach (SortProductEnum address in Enum.GetValues(typeof(SortProductEnum)))
+                            <select id="sort-select">
+                                @foreach (SortProductEnum sort in Enum.GetValues(typeof(SortProductEnum)))
                                 {
-                                    <option value="@((int)address)">@ExpressionLogic.GetEnumDescription(address)</option>
+                                    <option value="@((int)sort)">@ExpressionLogic.GetEnumDescription(sort)</option>
                                 }
                             </select>
                         </div>
@@ -279,9 +216,76 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn-modal color7" data-dismiss="modal">đóng</button>
-                <button type="button" class="btn-modal color5" data-dismiss="modal">Tìm kiếm</button>
+                <button type="button" class="btn-modal color5" data-dismiss="modal" onclick="Search()">Tìm kiếm</button>
             </div>
         </div>
     </div>
 </div>
-<script src="/js/ProductListView.js"></script>
+@* <script src="/js/ProductListView.js"></script> *@
+<script>
+$(document).ready(function(){
+    Search();
+});
+function Search() {
+  OpenLoading();
+  var address = $('#address-select').val();
+  var sort = $('#sort-select').val();
+  var keySearch = $('#key-search').val();
+  var category = $("input[name='CategoryProduct']:checked").map(function() {
+      return $(this).val();
+  }).get();
+  let url = `/api/product/ProductListData?Sort=${sort}&PageSize=3`;
+  if (address !== '0'){
+      url += `&Regional=${address}`;
+  }
+  if(category.length>0){
+    category.forEach(function(item, index) {
+      url += `&ListCategory=${item}`;
+    });
+  }
+  if(keySearch !== ''){
+    url += `&KeySearch=${keySearch}`;
+  }
+  $.ajax({
+      url: url,
+      method: 'GET',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(response) {
+          let html = '';
+          response.forEach(function(item, index) {
+              html += `<div class="col-lg-6 col-md-6 mb-3 border banner-news">
+                   <div class="single-what-news mb-15">
+                       <div class="what-img" style="position: relative;">
+                           <img class="ratio-news banner-news-img" src="/myfiles/${item.imgAvar}" alt="">
+                           <span class="color1 banner-tag">Night party</span>
+                       </div>
+                       <div class="">
+                           <div class="row border-date-card-product">
+                               <div class="text-black-50">${GetTimeDifference(item.dateUp)}</div>
+                               <div class="text-danger"><span>${item.letterPrice}</span> &#8901; <span>${item.areaM2} m²</span></div>
+                           </div>
+                           <h4 class="text-col2">
+                               <a href="${item.productId}">${item.productName}</a>
+                           </h4>
+                           <div>
+                               <div class="address-product"><i class="ti-location-pin"></i>${item.regional.regionalName}</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>`;
+          });
+          $('#content-product').html(html);
+          OffLoading();
+      },
+      error: function(xhr, status, error) {
+          OffLoading();
+          alert('có lỗi xảy ra');
+      }
+  });
+}
+function CreatePaging() {
+  
+}
+</script>
+@* http://localhost:5000/api/Product/ProductListData?pageIndex=1&categoryProduct=1&categoryProduct=2&listRegional=1&sort=2 *@

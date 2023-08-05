@@ -4,13 +4,10 @@ namespace WebBDS.Application.RequestModels;
 
 public class ProductListDataRequest
 {
-    public int pageIndex { get; set; }
-    public string? keySearch { get; set; }
-    public CategoryProductEnum? categoryProduct { get; set; }
-    public List<int>? listRegional { get; set; }
-    public SortProductsEnum? sortTime { get; set; }
-    public SortProductsEnum? sortPrice { get; set; }
-    public SortProductsEnum? sortArea { get; set; }
-    public SortProductsEnum? sortWidth { get; set; }
-    public SortProductsEnum? sort { get; set; }
+    public int PageIndex { get; set; }
+    public int PageSize { get; set; }
+    public string? KeySearch { get; set; }
+    public List<int>? ListCategory { get; set; }
+    public int? Regional { get; set; }
+    public SortProductEnum? Sort { get; set; }
 }
