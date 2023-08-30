@@ -13,8 +13,23 @@
 .color7{
     background: #6c757d;
 }
+.color8{
+    background: #8beaff;
+}
+.color9{
+    background: #93acff;
+}
+.color10{
+    background: #d89dff;
+}
+.color11{
+    background: #ff90d8;
+}
 .text-color1{
     color: #6c757d;
+}
+.text-color2{
+    color: #8beaff;
 }
 .text-col2{
     display: -webkit-box;
@@ -31,6 +46,14 @@
 .ratio-news{
     aspect-ratio: 1.7;
 }
+.btn-page{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    width: 1.9rem;
+    justify-content: center;
+}
+
 @media (max-width: 767px) {
     .btn-more{
         padding: 6px;

@@ -69,27 +69,9 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="single-wrap d-flex justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-start">
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <span class="flaticon-arrow roted"></span>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" >01</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">02</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">03</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <span class="flaticon-arrow right-arrow"></span>
-                                </a>
-                            </li>
+                    <nav aria-label="Page navigation example" >
+                        <ul class="pagination justify-content-start" id="PaginationBDS" style="height: 2.3rem;">
+                            @* paging *@
                         </ul>
                     </nav>
                 </div>
@@ -177,6 +159,7 @@
                         <h6 class="mb-10 text-color1 ">Khu vực BĐS</h6>
                         <div class="default-select address-checkbox">
                             <select id="address-select">
+                                <option value="0">Tất cả</option>
                                 @foreach (var address in AddressProduct.AllAddressProduct)
                                 {
                                     <option value="@address.RegionalId">@address.RegionalName</option>
@@ -223,6 +206,7 @@
 </div>
 @* <script src="/js/ProductListView.js"></script> *@
 <script>
+let pageIndexGlobal = 1;
 $(document).ready(function(){
     Search();
 });
@@ -246,6 +230,7 @@ function Search() {
   if(keySearch !== ''){
     url += `&KeySearch=${keySearch}`;
   }
+  url += `&PageIndex=${pageIndexGlobal}`;
   $.ajax({
       url: url,
       method: 'GET',
@@ -253,12 +238,14 @@ function Search() {
       dataType: "json",
       success: function(response) {
           let html = '';
-          response.forEach(function(item, index) {
+          response.productsList.forEach(function(item, index) {
               html += `<div class="col-lg-6 col-md-6 mb-3 border banner-news">
                    <div class="single-what-news mb-15">
                        <div class="what-img" style="position: relative;">
                            <img class="ratio-news banner-news-img" src="/myfiles/${item.imgAvar}" alt="">
-                           <span class="color1 banner-tag">Night party</span>
+                           <span class="${GetColorTagCategory(item.category.categoryId)} banner-tag">
+                                ${item.category.categoryName}                            
+                           </span>
                        </div>
                        <div class="">
                            <div class="row border-date-card-product">
@@ -276,6 +263,7 @@ function Search() {
                </div>`;
           });
           $('#content-product').html(html);
+          LoadPageItem(response.pageIndex, response.totalPage, 'PaginationBDS');
           OffLoading();
       },
       error: function(xhr, status, error) {
@@ -286,6 +274,32 @@ function Search() {
 }
 function CreatePaging() {
   
+}
+function ChangePage(pageIndex) {
+  pageIndexGlobal = pageIndex;
+  Search();
+  pageIndexGlobal = 0;
+}
+$("#key-search").keyup(function (event) {
+    if (event.keyCode === 13) {
+        Search();
+    }
+});
+function GetColorTagCategory(categoryId) {
+  switch (categoryId) {
+     case 1:
+         return 'color1';
+     case 2:
+         return 'color2';
+     case 3:
+         return 'color3';
+     case 4:
+         return 'color4';
+  }
+}
+function CheckActive(value1, value2) {
+  if (value1===value2) return 'active';
+  return '';
 }
 </script>
 @* http://localhost:5000/api/Product/ProductListData?pageIndex=1&categoryProduct=1&categoryProduct=2&listRegional=1&sort=2 *@

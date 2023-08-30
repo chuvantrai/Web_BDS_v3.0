@@ -82,32 +82,17 @@ public class ProductController : ControllerBase
                 whereExpression = whereExpression.And(exprSearch);
             }
 
-            var bySort = "-DateUp";
-
-            switch (request.Sort)
+            var bySort = request.Sort switch
             {
-                case SortProductEnum.NewProduct:
-                    bySort = "-DateUp";
-                    break;
-                case SortProductEnum.PriceHigh:
-                    bySort = "NoPrice";
-                    break;
-                case SortProductEnum.PriceLow:
-                    bySort = "-NoPrice";
-                    break;
-                case SortProductEnum.PriceMeterLow:
-                    bySort = "PriceM2";
-                    break;
-                case SortProductEnum.PriceMeterHigh:
-                    bySort = "-PriceM2";
-                    break;
-                case SortProductEnum.AcreageHigh:
-                    bySort = "AreaM2";
-                    break;
-                case SortProductEnum.AcreageLow:
-                    bySort = "-AreaM2";
-                    break;
-            }
+                SortProductEnum.NewProduct => "-DateUp",
+                SortProductEnum.PriceHigh => "NoPrice",
+                SortProductEnum.PriceLow => "-NoPrice",
+                SortProductEnum.PriceMeterLow => "PriceM2",
+                SortProductEnum.PriceMeterHigh => "-PriceM2",
+                SortProductEnum.AcreageHigh => "AreaM2",
+                SortProductEnum.AcreageLow => "-AreaM2",
+                _ => "-DateUp"
+            };
 
             var productsList = await _context.Products
                 .Include(x => x.Category)
@@ -119,12 +104,13 @@ public class ProductController : ControllerBase
 
             var totalP = productsList.Count;
             productListResponse.TotalPage = totalP / pageSize + (totalP % pageSize > 0 ? 1 : 0);
+            productListResponse.PageIndex = request.PageIndex;
             productListResponse.ProductsList = productsList
                 .SortBy(bySort)
                 .Skip(pageSize * (request.PageIndex - 1))
                 .Take(pageSize).ToList();
 
-            return Ok(productListResponse.ProductsList);
+            return Ok(productListResponse);
         }
         catch (Exception e)
         {

@@ -6,4 +6,6 @@ public class ProductListResponse
 {
     public List<ProductResponse>? ProductsList { get; set; }
     public int TotalPage { get; set; }
+    
+    public int PageIndex { get; set; }
 }

@@ -1,0 +1,63 @@
+@page "/bat-dong-san/{id}"
+@model WebBDS.Pages.Public.ProductDetail
+<style>
+  .btn-next-img-right{
+      background-image: linear-gradient(90deg, #00000000 0%, #000000f2 100%);
+          color: #fff;
+          text-decoration: none;
+          outline: 0;
+          opacity: .6 !important;
+  }
+  .btn-next-img-left{
+      background-image: linear-gradient(90deg, #000000f2 0%, #00000000 100%);
+      color: #fff;
+          text-decoration: none;
+          outline: 0;
+          opacity: .6 !important;
+  }
+  .image-file-bg{
+      filter: blur(5px);
+  }
+  .image-main{
+    position: absolute;
+          top: 0;
+          object-fit: contain;
+  }
+</style>
+<section class="whats-news-area pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade w-100" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item ratio-news active">
+                        <img class="w-100 h-100 image-file-bg" src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" id="image-main-bg">
+                        <img class="d-block w-100 h-100 image-main" src="/myfiles/ea5dcb44-de2c-497f-a00e-45c42686c5f8.png" alt="First slide">
+                    </div>
+                    <div class="carousel-item ratio-news">
+                        <img class="w-100 h-100 image-file-bg" src="/myfiles/5e756f73-4cc4-43c5-aa8e-b863bc0867e1.jpg" id="image-main-bg">
+                        <img class="d-block w-100 h-100 image-main" src="/myfiles/5e756f73-4cc4-43c5-aa8e-b863bc0867e1.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item ratio-news">
+                        <img class="w-100 h-100 image-file-bg" src="/myfiles/0a89f0cd-1b1d-442e-b588-79465f05be82.png" id="image-main-bg">
+                        <img class="d-block w-100 h-100 image-main" src="/myfiles/0a89f0cd-1b1d-442e-b588-79465f05be82.png" alt="First slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev btn-next-img-left" href="#carouselExampleFade" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next btn-next-img-right" href="#carouselExampleFade" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        
+        </div>
+        
+    </div>
+</section>
