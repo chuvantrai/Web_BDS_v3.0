@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Globalization;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -226,20 +227,15 @@ public static class ExpressionLogic
     
     public static string GetEnumDescription(Enum value)
     {
-        Type type = value.GetType();
-        string? name = Enum.GetName(type, value);
+        var type = value.GetType();
+        var name = Enum.GetName(type, value);
 
-        if (name != null)
+        if (name == null) return value.ToString();
+        var field = type.GetField(name);
+        if (field == null) return value.ToString();
+        if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attr)
         {
-            FieldInfo? field = type.GetField(name);
-            if (field != null)
-            {
-                DescriptionAttribute? attr = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
-                if (attr != null)
-                {
-                    return attr.Description;
-                }
-            }
+            return attr.Description;
         }
         return value.ToString();
     }
@@ -250,13 +246,12 @@ public static class ExpressionLogic
         const double million = 1000000;
         const double thousand = 1000;
 
-        if (number >= billion)
-            return $"{number / billion}Tỷ";
-        if (number >= million)
-            return $"{number / million}Triệu";
-        if (number >= thousand)
-            return $"{number / thousand}K";
-
-        return number.ToString();
+        return number switch
+        {
+            >= billion => $"{Math.Round(number / billion, 2, MidpointRounding.AwayFromZero)}Tỷ",
+            >= million => $"{Math.Round(number / million, 2, MidpointRounding.AwayFromZero)}Triệu",
+            >= thousand => $"{Math.Round(number / thousand, 2, MidpointRounding.AwayFromZero)}K",
+            _ => number.ToString(CultureInfo.CurrentCulture)
+        };
     }
 }

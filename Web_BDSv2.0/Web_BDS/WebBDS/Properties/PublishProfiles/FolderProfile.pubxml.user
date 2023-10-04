@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\_MyProject\Web_BDS_v3.0\Web_BDSv2.0\Web_BDS\publish</_PublishTargetUrl>
+    <History>True|2023-10-04T10:51:49.1233862Z;True|2023-10-04T17:03:52.4852564+07:00;True|2023-10-04T16:28:07.5822516+07:00;True|2023-10-04T16:13:53.0171084+07:00;True|2023-10-04T16:08:25.5112731+07:00;True|2023-10-04T16:07:51.5073768+07:00;True|2023-10-03T17:07:15.5434424+07:00;True|2023-10-03T17:04:55.6854295+07:00;True|2023-10-03T17:02:59.8849472+07:00;True|2023-10-03T16:59:16.7516730+07:00;True|2023-10-03T16:57:06.0345872+07:00;True|2023-10-03T15:04:47.4105791+07:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

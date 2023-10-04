@@ -2,23 +2,22 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using WebBDS.Application.ResponseModels;
+using WebBDS.Emuns;
 using WebBDS.Models;
 
 namespace WebBDS.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly HttpClient _client = null;
-        private string _serviceUrl { get; set; }
-        public IndexModel(HttpClient client)
+        private readonly Bds_CShapContext _context;
+
+        public IndexModel(Bds_CShapContext context)
         {
-            _client = new HttpClient();
-            var contentType = new MediaTypeWithQualityHeaderValue("application/json");
-            _client.DefaultRequestHeaders.Accept.Add(contentType);
-            _serviceUrl = "http://localhost:5000/";
+            _context = context;
         }
-        
+
         public List<News> Top3News { get; set; }
         public List<Product> Top3CanHo { get; set; }
         public List<Product> Top3DatNen { get; set; }
@@ -29,26 +28,21 @@ namespace WebBDS.Pages
         {
             try
             {
-                HttpResponseMessage response = await _client.GetAsync(_serviceUrl+"api/home/HomeData");
-                if (response.IsSuccessStatusCode)
-                {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    var option = new JsonSerializerOptions
-                        { PropertyNameCaseInsensitive = true };
-                    var listData = JsonSerializer.Deserialize<HomeResponse>(responseBody, option);
-                    Top3News = listData!.Top3News;
-                    Top3CanHo = listData.Top3CanHo;
-                    Top3DatNen = listData.Top3DatNen;
-                    Top3NhaPho = listData.Top3NhaPho;
-                    Top3BietThu = listData.Top3BietThu;
-                    return Page();
-                }
+                Top3CanHo = await _context.Products.OrderByDescending(x => x.ProductId)
+                    .Where(x => x.CategoryId == (int)CategoryProductEnum.CanHo).Skip(0).Take(6).ToListAsync();
+                Top3DatNen = await _context.Products.OrderByDescending(x => x.ProductId)
+                    .Where(x => x.CategoryId == (int)CategoryProductEnum.DatNen).Skip(0).Take(6).ToListAsync();
+                Top3NhaPho = await _context.Products.OrderByDescending(x => x.ProductId)
+                    .Where(x => x.CategoryId == (int)CategoryProductEnum.NhaPho).Skip(0).Take(6).ToListAsync();
+                Top3BietThu = await _context.Products.OrderByDescending(x => x.ProductId)
+                    .Where(x => x.CategoryId == (int)CategoryProductEnum.BietThu).Skip(0).Take(6).ToListAsync();
+                Top3News = await _context.News.OrderByDescending(x => x.DateUp).Skip(0).Take(3).ToListAsync();
+                return Page();
             }
             catch
             {
                 return RedirectToPage("/Error");
             }
-            return RedirectToPage("/Error");
         }
     }
 }

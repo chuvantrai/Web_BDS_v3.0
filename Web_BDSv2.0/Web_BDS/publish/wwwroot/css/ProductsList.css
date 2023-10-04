@@ -1,0 +1,67 @@
+.input-search{
+    margin-top: 1rem;
+}
+.input-search button{
+    border-radius: 0px 6px 6px 0px;
+    border-color: #49505717;
+}
+.btn-modal{
+    border-radius: 8px;
+    border-color: #999999a8;
+}
+.border-date-card-product{
+    justify-content: space-between;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+@media (max-width: 767px) {
+    .filter-border{
+        display: grid;
+        align-items: center;
+        width: 25%;
+        margin-right: auto;
+        justify-content: center;
+    }
+    .filter-border button{
+        border-color: #49505717;
+        color: #506172;
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 8px;
+    }
+    .search-border{
+        width: 70%;
+        padding-right: 1rem;
+    }
+    .border-fil{
+        height: 5.7rem;
+    }
+    .border-title-head{
+        height: 2.7rem;
+    }
+    .border-checkbox{
+        align-items: center;
+        height: 2rem;
+        padding-left: 1.5rem;
+    }
+    .border-checkbox .text-checkbox{
+        max-width: 90%;
+    }
+    .popup-category{
+        padding-right: 2rem;
+    }
+    .address-checkbox ul{
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    }
+    .address-checkbox li{
+        font-weight: 400 !important;
+        font-size: 1em !important;
+    }
+    .address-checkbox span{
+        font-weight: 400 !important;
+        font-size: 1em !important;
+    }
+    .sort-checkbox .open{
+        max-width: 10.5rem;
+    }
+}
